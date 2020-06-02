@@ -1,6 +1,7 @@
 package test;
 
 import com.rjyjy.commonutils.StubServletOutputStream;
+import com.rjyjy.servicehandle.utility.BaseHttpServlet;
 import org.junit.Test;
 import org.mockito.Mockito;
 
