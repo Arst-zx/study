@@ -63,23 +63,34 @@ class Hungrysingleton {
 }
 
 class MyObject {
-    private volatile static MyObject myObject;
-    private MyObject() {};
-    public static MyObject getInstance() {
-        try {
-            Thread.sleep(3000);
-            synchronized (MyObject.class) {
-                if (myObject != null) {
-                } else {
-                    myObject = new MyObject();
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return myObject;
+
+//    private volatile static MyObject myObject;
+//    private MyObject() {};
+//    public static MyObject getInstance() {
+//        try {
+//            Thread.sleep(3000);
+//            synchronized (MyObject.class) {
+//                if (myObject != null) {
+//                } else {
+//                    myObject = new MyObject();
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return myObject;
+//    }
+
+    // 静态内部类方式
+    private static class MyObjectInner {
+        private static MyObject myObject = new MyObject();
     }
 
+    private MyObject() {};
+
+    public static MyObject getInstance() {
+        return MyObjectInner.myObject;
+    }
 }
 
 class MyThred extends Thread {
