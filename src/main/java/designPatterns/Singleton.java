@@ -62,3 +62,43 @@ class Hungrysingleton {
 
 }
 
+class MyObject {
+    private volatile static MyObject myObject;
+    private MyObject() {};
+    public static MyObject getInstance() {
+        try {
+            Thread.sleep(3000);
+            synchronized (MyObject.class) {
+                if (myObject != null) {
+                } else {
+                    myObject = new MyObject();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return myObject;
+    }
+
+}
+
+class MyThred extends Thread {
+    @Override
+    public void run() {
+        super.run();
+        System.out.println(MyObject.getInstance().hashCode());
+    }
+}
+
+class Run {
+    public static void main(String[] args) {
+        MyThred myThred1 = new MyThred();
+        MyThred myThred2 = new MyThred();
+        MyThred myThred3 = new MyThred();
+
+        myThred1.start();
+        myThred2.start();
+        myThred3.start();
+    }
+}
+
