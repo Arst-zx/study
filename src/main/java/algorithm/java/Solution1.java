@@ -40,4 +40,65 @@ public class Solution1 {
     }
 }
 
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        if (nums.length >= 2) {
+            for (int i = 0; i < nums.length; i++) {
+                for (int j = i+1; j < nums.length; j++) {
+                    int[] result = new int[2];
+                    if (nums[i] + nums[j] == target) {
+                        result[0] = i;
+                        result[1] = j;
+                        System.out.println("两个数的下标是：" + result[0] + "," + result[1]);
+                        return result;
+                    }
+                }
+            }
+            System.out.println("找不到这样的两个数");
+            return null;
+        } else {
+            System.out.println("输入有误");
+            return null;
+        }
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[] nums = {2,4,6,7};
+        int target = 6;
+        solution.twoSum(nums, target);
+    }
+}
+
+class Solutionl {
+    public int reverse(int x) {
+        if (x >= Integer.MAX_VALUE || x <= Integer.MIN_VALUE) {
+            return 0;
+        } else {
+            int[] result = new int[32];
+            int shang = x;
+            int i = 0;
+            while (shang != 0) {
+                int yushu = shang % 10;
+                shang = shang / 10;
+                result[i] = yushu;
+                i++;
+            }
+
+            long sum = 0;
+            for (int m=0; m<i; m++) {
+                Double pow = Math.pow(10d, i - m - 1);
+                sum = (long)(sum + result[m] * pow);
+            }
+            System.out.println(sum);
+            return (int)sum;
+        }
+    }
+
+    public static void main(String[] args) {
+        Solutionl solutionl = new Solutionl();
+        int result = solutionl.reverse(0);
+    }
+}
+
 
