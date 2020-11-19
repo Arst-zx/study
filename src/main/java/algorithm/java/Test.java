@@ -103,3 +103,30 @@ class Test1 {
     }
 
 }
+
+class Test2 {
+    public int maxSubArray(int[] nums) {
+        int f_max = nums[0];
+        int f_i = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+
+            if (f_i + nums[i] > nums[i]) {
+                f_i = f_i + nums[i];
+            } else {
+                f_i = nums[i];
+            }
+
+            if (f_i > f_max) {
+                f_max = f_i;
+            }
+        }
+        return f_max;
+    }
+
+    public static void main(String[] args) {
+        Test2 test2 = new Test2();
+        int[] nums = {1,2,3,6,4,-2,-3,6};
+        int result = test2.maxSubArray(nums);
+        System.out.println(result);
+    }
+}
