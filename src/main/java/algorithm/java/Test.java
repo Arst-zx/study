@@ -16,6 +16,9 @@ class TreeNode {
     TreeNode(int x) { val = x; }
 }
 
+/**
+ * 101
+ */
 class Test {
 
     public boolean isSymmetric(TreeNode root) {
@@ -62,6 +65,9 @@ class Test {
 
 }
 
+/**
+ * 21
+ */
 class Test1 {
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
@@ -104,6 +110,9 @@ class Test1 {
 
 }
 
+/**
+ * 53
+ */
 class Test2 {
     public int maxSubArray(int[] nums) {
         int f_max = nums[0];
@@ -127,6 +136,59 @@ class Test2 {
         Test2 test2 = new Test2();
         int[] nums = {1,2,3,6,4,-2,-3,6};
         int result = test2.maxSubArray(nums);
+        System.out.println(result);
+    }
+}
+
+/**
+ * 70
+ */
+class Test3 {
+    public long climbStairs(int n) {
+        long f1;
+        long f2 = 0L;
+        long f3 = 1L;
+        for (int i = 1; i <= n; ++i) {
+            f1 = f2;
+            f2 = f3;
+            f3 = f1 + f2;
+        }
+        return f3;
+    }
+
+    public static void main(String[] args) {
+        Test3 test3 = new Test3();
+        long result = test3.climbStairs(9);
+        System.out.println(result);
+    }
+}
+
+class Test4 {
+
+    public int maxDepth(TreeNode root) {
+
+        if (root == null) {
+            return 0;
+        }
+
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+        if (left > right) {
+            return left + 1;
+        }
+        return right + 1;
+    }
+
+    public static void main(String[] args) {
+        Test4 test4 = new Test4();
+        TreeNode treeNode = new TreeNode(1);
+        treeNode.left = new TreeNode(2);
+        treeNode.right = new TreeNode(2);
+        treeNode.left.left = new TreeNode(3);
+        treeNode.left.right = new TreeNode(3);
+        treeNode.left.left.left = new TreeNode(4);
+
+        int result = test4.maxDepth(treeNode);
         System.out.println(result);
     }
 }
