@@ -233,3 +233,66 @@ class Test5 {
         return max;
     }
 }
+
+/**
+ * 136
+ */
+class Test6 {
+//    public int singleNumber(int[] nums) {
+//        Stack<Integer> stack = new Stack<>();
+//        for (int i = 0; i < nums.length; i++) {
+//            Integer integer = nums[i];
+//            if (stack.contains(integer)) {
+//                stack.remove(integer);
+//            } else {
+//                stack.push(integer);
+//            }
+//        }
+//        return stack.pop();
+//    }
+
+    public int singleNumber(int[] nums) {
+        int singleNumber = 0;
+        for (int i = 0; i < nums.length; i++) {
+            singleNumber = singleNumber ^ nums[i];
+        }
+        return singleNumber;
+    }
+}
+
+/**
+ * 141
+ */
+class Test7 {
+//    public boolean hasCycle(ListNode head) {
+//        List<ListNode> list = new ArrayList<>();
+//        while (head.next != null) {
+//            if (list.contains(head)) {
+//                return true;
+//            } else {
+//                list.add(head);
+//            }
+//            head = head.next;
+//        }
+//        return false;
+//    }
+
+    public boolean hasCycle(ListNode head) {
+        if (head == null) {
+            return false;
+        }
+        if (head.next == null) {
+            return false;
+        }
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while (slow != fast) {
+            if (fast == null || fast.next == null) {
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return true;
+    }
+}
