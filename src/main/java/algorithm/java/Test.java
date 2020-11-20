@@ -195,3 +195,41 @@ class Test4 {
         System.out.println(result);
     }
 }
+
+/**
+ * 121
+ */
+class Test5 {
+//    public int maxProfit(int[] prices) {
+//        if (prices.length < 2) {
+//            return 0;
+//        }
+//        int max = 0;
+//        for (int i = 0; i < prices.length-1; i++) {
+//            int pre = prices[i+1];
+//            for (int j = i+1; j < prices.length; j++) {
+//                if (prices[j] > pre) {
+//                    pre = prices[j];
+//                }
+//            }
+//            if (pre - prices[i] > max) {
+//                max = pre - prices[i];
+//            }
+//        }
+//        return max;
+//    }
+
+    public int maxProfit(int[] prices) {
+        int max = 0;
+        int pre = Integer.MAX_VALUE;
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < pre) {
+                pre = prices[i];
+            }
+            if (prices[i] - pre > max) {
+                max = prices[i] - pre;
+            }
+        }
+        return max;
+    }
+}
