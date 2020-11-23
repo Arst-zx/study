@@ -378,10 +378,52 @@ class MinStack {
     }
 
     public static void main(String[] args) {
-         MinStack obj = new MinStack();
-         obj.push(6);
-         obj.pop();
-//         int param_3 = obj.top();
-         int param_4 = obj.getMin();
+        MinStack obj = new MinStack();
+        obj.push(6);
+//        obj.pop();
+        int param_3 = obj.top();
+        System.out.println(param_3);
+        int param_4 = obj.getMin();
+        System.out.println(param_4);
+    }
+}
+
+
+class Test8 {
+//    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+//        if (headA == null || headB == null) {
+//            return null;
+//        }
+//        ArrayList<ListNode> arrayList = new ArrayList<>();
+//        while (headA != null) {
+//            arrayList.add(headA);
+//            headA = headA.next;
+//        }
+//        while (headB != null) {
+//            if (arrayList.contains(headB)) {
+//                return headB;
+//            }
+//            headB = headB.next;
+//        }
+//        return null;
+//    }
+
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode listNodeA = headA;
+        ListNode listNodeB = headB;
+        while (listNodeA != listNodeB) {
+            if (listNodeA == null) {
+                listNodeA = headB;
+            } else {
+                listNodeA = listNodeA.next;
+            }
+
+            if (listNodeB == null) {
+                listNodeB = headA;
+            } else {
+                listNodeB = listNodeB.next;
+            }
+        }
+        return listNodeA;
     }
 }
