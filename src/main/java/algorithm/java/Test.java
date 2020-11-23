@@ -1,5 +1,7 @@
 package algorithm.java;
 
+import java.util.Stack;
+
 /**
  * @author: 章鑫
  * @Email: zhangx511@chinaunicom.cn
@@ -294,5 +296,92 @@ class Test7 {
             fast = fast.next.next;
         }
         return true;
+    }
+}
+
+/**
+ * 155
+ */
+//class MinStack {
+//
+//    private Stack<Integer> stack;
+//
+//    /** initialize your data structure here. */
+//    public MinStack() {
+//        stack = new Stack<>();
+//    }
+//
+//    public void push(int x) {
+//        Integer integer = x;
+//        stack.push(integer);
+//    }
+//
+//    public void pop() {
+//        stack.pop();
+//    }
+//
+//    public int top() {
+//        return stack.peek();
+//    }
+//
+//    public int getMin() {
+//        if (stack == null) {
+//            return 0;
+//        }
+//        int min = stack.get(0);
+//        for (int i = 0; i < stack.size(); i++) {
+//            if (stack.get(i) < min) {
+//                min = stack.get(i);
+//            }
+//        }
+//        return min;
+//    }
+//}
+
+/**
+ * 155
+ */
+class MinStack {
+
+    private Stack<Integer> stack;
+    private Stack<Integer> minStack;
+
+    /** initialize your data structure here. */
+    public MinStack() {
+        stack = new Stack<>();
+        minStack = new Stack<>();
+    }
+
+    public void push(int x) {
+        Integer integer = x;
+        stack.push(integer);
+        if (minStack.empty()) {
+            minStack.push(integer);
+        } else if (integer < minStack.peek()){
+            minStack.push(integer);
+        } else {
+            minStack.push(minStack.peek());
+        }
+    }
+
+    public void pop() {
+        stack.pop();
+        minStack.pop();
+    }
+
+    public int top() {
+        return stack.peek();
+    }
+
+    public int getMin() {
+        return minStack.peek();
+    }
+
+    public static void main(String[] args) {
+         MinStack obj = new MinStack();
+         obj.push(6);
+         obj.pop();
+//         int param_3 = obj.top();
+         int param_4 = obj.getMin();
     }
 }
