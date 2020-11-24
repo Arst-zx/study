@@ -514,3 +514,51 @@ class Test9 {
         System.out.println(value);
     }
 }
+
+/**
+ * 198
+ */
+class Test10 {
+    public int rob(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        int sum1 = nums[0];
+        int sum2 = Math.max(nums[0], nums[1]);
+        for (int i = 2; i < nums.length; i++) {
+            int temp = sum2;
+            sum2 = Math.max(sum1 + nums[i], sum2);
+            sum1 = temp;
+        }
+        return sum2;
+    }
+}
+
+/**
+ * 206
+ */
+class Test11 {
+    public ListNode reverseList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode listNode = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return listNode;
+    }
+
+    public static void main(String[] args) {
+        Test11 test11 = new Test11();
+        ListNode listNode = new ListNode(1);
+        listNode.next = new ListNode(2);
+        listNode.next.next = new ListNode(3);
+        listNode.next.next.next = new ListNode(4);
+
+        ListNode result = test11.reverseList(listNode);
+        System.out.println(result);
+    }
+}
