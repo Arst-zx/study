@@ -388,7 +388,9 @@ class MinStack {
     }
 }
 
-
+/**
+ * 160
+ */
 class Test8 {
 //    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 //        if (headA == null || headB == null) {
@@ -425,5 +427,90 @@ class Test8 {
             }
         }
         return listNodeA;
+    }
+}
+
+/**
+ * 169
+ */
+class Test9 {
+//    public int majorityElement(int[] nums) {
+//        int num = 0;
+//        int value = 0;
+//        for (int i = 0; i < nums.length; i++) {
+//            int count = 0;
+//            if (nums[i] == value) {
+//                continue;
+//            }
+//            for (int j = i; j < nums.length; j++) {
+//                if (nums[j] == nums[i]) {
+//                    count++;
+//                }
+//            }
+//            if (count > num) {
+//                num = count;
+//                value = nums[i];
+//            }
+//        }
+//        return value;
+//    }
+
+//    public int majorityElement(int[] nums) {
+//        int value = 0;
+//        int count = 0;
+//        for (int num : nums) {
+//            if (count == 0) {
+//                value = num;
+//            }
+//            if (num == value) {
+//                count++;
+//            } else {
+//                count--;
+//            }
+//        }
+//        System.out.println(value);
+//        return value;
+//    }
+
+
+    public int count(int[] nums, int value) {
+        int count = 0;
+        for (int num: nums) {
+            if (num == value) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private int majorityElementR(int[] nums, int min, int max) {
+        if (min == max) {
+            return nums[min];
+        }
+
+        int left = majorityElementR(nums, min, (max + min)/2);
+        int right = majorityElementR(nums, (max + min)/2 + 1, max);
+
+        if (left == right) {
+            return left;
+        }
+
+        int leftCount = count(nums, left);
+        int rightCount = count(nums, right);
+
+        if (leftCount > rightCount) {
+            return left;
+        }
+        return right;
+    }
+
+    public int majorityElement(int[] nums) {
+        return majorityElementR(nums, 0, nums.length - 1);
+    }
+
+    public static void main(String[] args) {
+        Test9 test9 = new Test9();
+        int value = test9.majorityElement(new int[]{3, 3, 3, 4, 4, 3});
+        System.out.println(value);
     }
 }
