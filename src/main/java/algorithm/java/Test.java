@@ -675,3 +675,61 @@ class Test13 {
         System.out.println(tag);
     }
 }
+
+/**
+ * 283
+ */
+class Test14 {
+//    public void moveZeroes(int[] nums) {
+//        for (int i = 0; i < nums.length; i++) {
+//            if (nums[i] == 0) {
+//                for (int j = i + 1; j < nums.length; j++) {
+//                    if (nums[j] != 0) {
+//                        int temp = nums[i];
+//                        nums[i] = nums[j];
+//                        nums[j] = temp;
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//    }
+
+//    public void moveZeroes(int[] nums) {
+//        ArrayList<Integer> arrayList = new ArrayList<>(nums.length);
+//        int count = 0;
+//        for (int num : nums) {
+//            if (num != 0) {
+//                arrayList.add(num);
+//            }
+//            count++;
+//        }
+//        while (count != 0) {
+//            arrayList.add(0);
+//            count--;
+//        }
+//        for (int i = 0; i < arrayList.size(); i++) {
+//            nums[i] = arrayList.get(i);
+//        }
+//    }
+
+    public void moveZeroes(int[] nums) {
+        int i = 0, j = 0;
+        while (j < nums.length) {
+            if (nums[j] == 0) {
+                j++;
+            } else {
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                i++;
+                j++;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Test14 test14 = new Test14();
+        test14.moveZeroes(new int[] {0,0,1});
+    }
+}
