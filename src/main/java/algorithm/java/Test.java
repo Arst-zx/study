@@ -542,14 +542,26 @@ class Test10 {
  */
 class Test11 {
     public ListNode reverseList(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
+        ListNode pre = null;
+        ListNode cur = head;
+        while (cur != null) {
+            ListNode temp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = temp;
         }
-        ListNode listNode = reverseList(head.next);
-        head.next.next = head;
-        head.next = null;
-        return listNode;
+        return pre;
     }
+
+//    public ListNode reverseList(ListNode head) {
+//        if (head == null || head.next == null) {
+//            return head;
+//        }
+//        ListNode listNode = reverseList(head.next);
+//        head.next.next = head;
+//        head.next = null;
+//        return listNode;
+//    }
 
     public static void main(String[] args) {
         Test11 test11 = new Test11();
