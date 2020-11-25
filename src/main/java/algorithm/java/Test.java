@@ -574,3 +574,104 @@ class Test11 {
         System.out.println(result);
     }
 }
+
+/**
+ * 226
+ */
+class Test12 {
+    public TreeNode invertTree(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        if (root.left == null && root.right  == null) {
+            return root;
+        }
+        TreeNode left = invertTree(root.left);
+        TreeNode right = invertTree(root.right);
+        root.left = right;
+        root.right = left;
+        return root;
+    }
+}
+
+/**
+ * 234
+ */
+class Test13 {
+//    public boolean isPalindrome(ListNode head) {
+//        if (head == null) {
+//            return true;
+//        }
+//        ArrayList<Integer> arrayList = new ArrayList<>();
+//        while (head != null) {
+//            arrayList.add(head.val);
+//            head = head.next;
+//        }
+//        for (int i = 0; i < arrayList.size()/2; i++) {
+//            if (!arrayList.get(i).equals(arrayList.get(arrayList.size() - 1 - i))) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+
+    public boolean isPalindrome(ListNode head) {
+        if (head == null) {
+            return true;
+        }
+
+        // 找到后半部分的第一个节点firstPartEnd
+        ListNode secondPartfirst = secondPartfirst(head);
+
+        // 反转后半部分为reverseListNode
+        ListNode reverseListNode = reverseListNode(secondPartfirst);
+
+        // 判断是否为回文
+        ListNode pre = reverseListNode;
+        ListNode temp = head;
+        while (pre != null) {
+            if (pre.val != temp.val) {
+                return false;
+            }
+            pre = pre.next;
+            temp = temp.next;
+        }
+
+        // reverseListNodevv反转回
+        secondPartfirst.next = reverseListNode(reverseListNode);
+
+        return true;
+    }
+
+    public ListNode secondPartfirst(ListNode listNode) {
+        ListNode slow = listNode;
+        ListNode fast = listNode;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    public ListNode reverseListNode(ListNode listNode) {
+        ListNode pre = null;
+        while (listNode != null) {
+            ListNode temp = listNode.next;
+            listNode.next = pre;
+            pre = listNode;
+            listNode = temp;
+        }
+        return pre;
+    }
+
+    public static void main(String[] args) {
+        Test13 test13 = new Test13();
+        ListNode listNode = new ListNode(1);
+        listNode.next = new ListNode(2);
+        listNode.next.next = new ListNode(2);
+        listNode.next.next.next = new ListNode(2);
+        listNode.next.next.next.next = new ListNode(1);
+        boolean tag = test13.isPalindrome(listNode);
+        System.out.println(tag);
+    }
+}
