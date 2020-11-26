@@ -1,6 +1,6 @@
 package algorithm.java;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author: 章鑫
@@ -731,5 +731,47 @@ class Test14 {
     public static void main(String[] args) {
         Test14 test14 = new Test14();
         test14.moveZeroes(new int[] {0,0,1});
+    }
+}
+
+/**
+ * 448
+ */
+class Test15 {
+//    public List<Integer> findDisappearedNumbers(int[] nums) {
+//        HashMap<Integer, Boolean> hashMap = new HashMap<>();
+//        for (int i = 0; i < nums.length; i++) {
+//            hashMap.put(nums[i], true);
+//        }
+//        List<Integer> list = new LinkedList<>();
+//        for (int i = 1; i <= nums.length; i++) {
+//            if (!hashMap.containsKey(i)) {
+//                list.add(i);
+//            }
+//        }
+//        return list;
+//    }
+
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            int temp = Math.abs(nums[i]) - 1;
+            if (nums[temp] > 0) {
+                nums[temp] *= -1;
+            }
+        }
+        List<Integer> list = new LinkedList<>();
+        for (int i = 0; i < nums.length; i++) {
+            Integer temp = i + 1;
+            if (nums[i] < 0) {
+                list.add(temp);
+            }
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+        Test15 test15 = new Test15();
+        List list = test15.findDisappearedNumbers(new int[]{4,3,2,7,8,2,3,1});
+        System.out.println(list);
     }
 }
