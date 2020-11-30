@@ -15,6 +15,7 @@ class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
+    TreeNode() {};
     TreeNode(int x) { val = x; }
 }
 
@@ -796,5 +797,69 @@ class Test16 {
     public static void main(String[] args) {
         Test16 test16 = new Test16();
         test16.hammingDistance(1,4);
+    }
+}
+
+/**
+ * 543
+ */
+class Test17 {
+    int count = 1;
+    public int diameterOfBinaryTree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        depth(root);
+        return count - 1;
+    }
+
+    public int depth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = depth(root.left);
+        int right = depth(root.right);
+        count = Math.max(count, left + right + 1);
+        return Math.max(left + 1, right +1);
+    }
+
+    public static void main(String[] args) {
+        Test17 test17 = new Test17();
+        TreeNode treeNode = new TreeNode(1);
+        treeNode.left = new TreeNode(2);
+        treeNode.right = new TreeNode(3);
+        treeNode.left.left = new TreeNode(4);
+        treeNode.left.right = new TreeNode(5);
+        int num = test17.diameterOfBinaryTree(treeNode);
+        System.out.println(num);
+
+    }
+}
+
+/**
+ * 617
+ */
+class Test18 {
+    public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        if (t1 == null) {
+            return t2;
+        }
+        if (t2 == null) {
+            return t1;
+        }
+        TreeNode treeNode = new TreeNode(t1.val + t2.val);
+        treeNode.left = mergeTrees(t1.left, t2.left);
+        treeNode.right = mergeTrees(t1.right, t2.right);
+        return treeNode;
+    }
+
+    public static void main(String[] args) {
+        Test18 test18 = new Test18();
+        TreeNode treeNode = new TreeNode(1);
+        treeNode.left = new TreeNode(2);
+        treeNode.right = new TreeNode(3);
+        treeNode.left.left = new TreeNode(4);
+        TreeNode t = test18.mergeTrees(treeNode, treeNode);
+        System.out.println(t);
     }
 }
