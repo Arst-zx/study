@@ -79,7 +79,7 @@ class Easy1 {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        Easy1 solution = new Easy1();
         int[] nums = {2,4,6,7};
         int target = 6;
         solution.twoSum(nums, target);
@@ -115,7 +115,7 @@ class Easy2 {
     }
 
     public static void main(String[] args) {
-        Solutionl solutionl = new Solutionl();
+        Easy2 solutionl = new Easy2();
         int result = solutionl.reverse(0);
     }
 }
@@ -155,7 +155,7 @@ class Easy3 {
     }
 
     public static void main(String[] args) {
-        Solution12 solution12 = new Solution12();
+        Easy3 solution12 = new Easy3();
         solution12.isPalindrome(121232121);
     }
 }
@@ -231,7 +231,7 @@ class Easy4 {
     }
 
     public static void main(String[] args) {
-        Solutionw solutionw = new Solutionw();
+        Easy4 solutionw = new Easy4();
         solutionw.romanToInt("MCMXCIV");
     }
 }
@@ -299,7 +299,7 @@ class Easy5 {
     }
 
     public static void main(String[] args) {
-        Solutione solution = new Solutione();
+        Easy5 solution = new Easy5();
         solution.romanToInt("MCMXCIV");
     }
 }
@@ -347,7 +347,7 @@ class Easy6 {
     }
 
     public static void main(String[] args) {
-        Solutionr solutionr = new Solutionr();
+        Easy6 solutionr = new Easy6();
         String[] ttt = {"ca","a"};
         solutionr.longestCommonPrefix(ttt);
     }
@@ -392,7 +392,7 @@ class Easy7 {
     }
 
     public static void main(String[] args) {
-        Solutioni solutioni = new Solutioni();
+        Easy7 solutioni = new Easy7();
         solutioni.isValid("{}[{}]((){})(){}");
     }
 }
@@ -885,7 +885,7 @@ class Easy14 {
         TreeNode rightRight = new TreeNode(0);
         right.right = rightRight;
 
-        Test test = new Test();
+        Easy14 test = new Easy14();
         test.isSymmetric(treeNode);
     }
 
@@ -925,7 +925,7 @@ class Easy15 {
         listNode2.next = new ListNode(5);
         listNode2.next.next = new ListNode(6);
 
-        Test1 test1 = new Test1();
+        Easy15 test1 = new Easy15();
         ListNode listNode = test1.mergeTwoLists(listNode1, listNode2);
         do {
             System.out.println(listNode.val);
@@ -959,7 +959,7 @@ class Easy16 {
     }
 
     public static void main(String[] args) {
-        Test2 test2 = new Test2();
+        Easy16 test2 = new Easy16();
         int[] nums = {1,2,3,6,4,-2,-3,6};
         int result = test2.maxSubArray(nums);
         System.out.println(result);
@@ -983,7 +983,7 @@ class Easy17 {
     }
 
     public static void main(String[] args) {
-        Test3 test3 = new Test3();
+        Easy17 test3 = new Easy17();
         long result = test3.climbStairs(9);
         System.out.println(result);
     }
@@ -1009,7 +1009,7 @@ class Easy18 {
     }
 
     public static void main(String[] args) {
-        Test4 test4 = new Test4();
+        Easy18 test4 = new Easy18();
         TreeNode treeNode = new TreeNode(1);
         treeNode.left = new TreeNode(2);
         treeNode.right = new TreeNode(2);
@@ -1333,7 +1333,7 @@ class Easy23 {
     }
 
     public static void main(String[] args) {
-        Test9 test9 = new Test9();
+        Easy23 test9 = new Easy23();
         int value = test9.majorityElement(new int[]{3, 3, 3, 4, 4, 3});
         System.out.println(value);
     }
@@ -1388,7 +1388,7 @@ class Easy25 {
 //    }
 
     public static void main(String[] args) {
-        Test11 test11 = new Test11();
+        Easy25 test11 = new Easy25();
         ListNode listNode = new ListNode(1);
         listNode.next = new ListNode(2);
         listNode.next.next = new ListNode(3);
@@ -1489,7 +1489,7 @@ class Easy27 {
     }
 
     public static void main(String[] args) {
-        Test13 test13 = new Test13();
+        Easy27 test13 = new Easy27();
         ListNode listNode = new ListNode(1);
         listNode.next = new ListNode(2);
         listNode.next.next = new ListNode(2);
@@ -1553,7 +1553,7 @@ class Easy28 {
     }
 
     public static void main(String[] args) {
-        Test14 test14 = new Test14();
+        Easy28 test14 = new Easy28();
         test14.moveZeroes(new int[] {0,0,1});
     }
 }
@@ -1594,7 +1594,7 @@ class Easy29 {
     }
 
     public static void main(String[] args) {
-        Test15 test15 = new Test15();
+        Easy29 test15 = new Easy29();
         List list = test15.findDisappearedNumbers(new int[]{4,3,2,7,8,2,3,1});
         System.out.println(list);
     }
@@ -1618,7 +1618,7 @@ class Easy30 {
     }
 
     public static void main(String[] args) {
-        Test16 test16 = new Test16();
+        Easy30 test16 = new Easy30();
         test16.hammingDistance(1,4);
     }
 }
@@ -1647,7 +1647,7 @@ class Easy31 {
     }
 
     public static void main(String[] args) {
-        Test17 test17 = new Test17();
+        Easy31 test17 = new Easy31();
         TreeNode treeNode = new TreeNode(1);
         treeNode.left = new TreeNode(2);
         treeNode.right = new TreeNode(3);
@@ -1677,7 +1677,7 @@ class Easy32 {
     }
 
     public static void main(String[] args) {
-        Test18 test18 = new Test18();
+        Easy32 test18 = new Easy32();
         TreeNode treeNode = new TreeNode(1);
         treeNode.left = new TreeNode(2);
         treeNode.right = new TreeNode(3);
