@@ -25,8 +25,9 @@ package algorithm.java;
  * @Description: 两数相加
  **/
 
-//leetcode submit region begin(Prohibit modification and deletion)
-
+/**
+ * 1
+ */
 public class Solution2 {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         // 相加后新的链表
@@ -71,6 +72,4 @@ public class Solution2 {
         return listNode.next;
     }
 }
-
-//leetcode submit region end(Prohibit modification and deletion)
 
