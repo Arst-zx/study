@@ -1,6 +1,5 @@
 package test;
 
-import algorithm.java.Solution3;
 import org.junit.Test;
 
 /**

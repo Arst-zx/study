@@ -10,5 +10,7 @@ package algorithm.java;
  **/
 
 public class Medium {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
+    }
 }

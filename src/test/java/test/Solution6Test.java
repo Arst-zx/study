@@ -1,6 +1,5 @@
 package test;
 
-import algorithm.java.Solution6;
 import org.junit.Test;
 
 public class Solution6Test {
