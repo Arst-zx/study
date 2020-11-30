@@ -775,3 +775,26 @@ class Test15 {
         System.out.println(list);
     }
 }
+
+/**
+ * 461
+ */
+class Test16 {
+    public int hammingDistance(int x, int y) {
+        int num = x ^ y;
+        int count = 0;
+        while (num > 0) {
+            int yushu = num%2;
+            if (yushu == 1) {
+                count++;
+            }
+            num = num/2;
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Test16 test16 = new Test16();
+        test16.hammingDistance(1,4);
+    }
+}
