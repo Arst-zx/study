@@ -398,54 +398,6 @@ class Easy7 {
 }
 
 /**
- * 2
- */
-class Easy8 {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        // 相加后新的链表
-        ListNode listNode = new ListNode(0);
-        ListNode l = listNode;
-
-        // 相加大于10的进位值，0或者1
-        int flowVal = 0;
-
-        // 循环相加两个链表的值
-        while (l1 != null || l2 != null) {
-
-            // l1当前节点值为n,l2当前节点值为m
-            int n = l1 != null ? l1.val : 0;
-            int m = l2 != null ? l2.val : 0;
-            int sum = n + m + flowVal;
-            flowVal = sum/10;
-
-            // 相加后节点
-            l.next = new ListNode(sum % 10);
-            l = l.next;
-
-            // l1不是空链表
-            if (l1 != null) {
-                l1 = l1.next;
-            }
-
-            // l2不是空链表
-            if (l2 != null) {
-                l2 = l2.next;
-            }
-        }
-
-        if (flowVal > 0) {
-            l.next = new ListNode(flowVal);
-        }
-
-        while (listNode != null) {
-            System.out.println(listNode.next.val);
-            listNode = listNode.next;
-        }
-        return listNode.next;
-    }
-}
-
-/**
  * 3
  */
 class Easy9 {
