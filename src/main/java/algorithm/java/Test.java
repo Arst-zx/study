@@ -11,6 +11,15 @@ import java.util.*;
  * @Description:
  **/
 
+class ListNode {
+    int val;
+    public ListNode next;
+    public ListNode() {}
+    public ListNode(int x) {
+        val = x;
+    }
+}
+
 class TreeNode {
     int val;
     TreeNode left;

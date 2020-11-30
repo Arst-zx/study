@@ -1,6 +1,5 @@
 package test;
 
-import algorithm.java.ListNode;
 import algorithm.java.Solution2;
 import org.junit.Test;
 
