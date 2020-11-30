@@ -11,6 +11,9 @@ import java.util.Stack;
  * @Description: 两数之和
  **/
 
+/**
+ * 1
+ */
 public class Solution1 {
     public int[] twoSum(int[] nums, int target) {
 
@@ -27,6 +30,9 @@ public class Solution1 {
     }
 }
 
+/**
+ * 1
+ */
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         if (nums.length >= 2) {
@@ -58,7 +64,7 @@ class Solution {
 }
 
 /**
- * 整数反转
+ * 7.整数反转
  */
 class Solutionl {
     public int reverse(int x) {
@@ -92,7 +98,7 @@ class Solutionl {
 }
 
 /**
- * 回文数
+ * 9.回文数
  */
 class Solution12 {
     public boolean isPalindrome(int x) {
@@ -132,7 +138,7 @@ class Solution12 {
 }
 
 /**
- * 罗马数字转整数
+ * 13.罗马数字转整数
  */
 class Solutionw {
     public int romanToInt(String s) {
@@ -208,7 +214,7 @@ class Solutionw {
 }
 
 /**
- * 罗马数字转整数
+ * 14.罗马数字转整数
  */
 class Solutione {
     public int romanToInt(String s) {
@@ -276,7 +282,7 @@ class Solutione {
 }
 
 /**
- * 最长公共前缀
+ * 20.最长公共前缀
  */
 class Solutionr {
     public String longestCommonPrefix(String[] strs) {
@@ -325,7 +331,7 @@ class Solutionr {
 }
 
 /**
- * 有效的括号
+ * 21.有效的括号
  */
 class Solutioni {
     public boolean isValid(String s) {
