@@ -64,3 +64,33 @@ public class Medium {
         medium.addTwoNumbers(l1, l2);
     }
 }
+
+class Medium1 {
+    public int lengthOfLongestSubstring(String s) {
+        if (s.isEmpty()) {
+            return 0;
+        }
+        int max = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int len = 0;
+            for (int j = i; j < s.length(); j++) {
+                int index = s.indexOf(s.charAt(j), i);
+                if (index >= j) {
+                    len++;
+                } else {
+                    break;
+                }
+            }
+            if (len > max) {
+                max = len;
+            }
+        }
+        return max;
+    }
+
+    public static void main(String[] args) {
+        Medium1 medium1 = new Medium1();
+        int num = medium1.lengthOfLongestSubstring("pwwkew");
+        System.out.println(num);
+    }
+}
