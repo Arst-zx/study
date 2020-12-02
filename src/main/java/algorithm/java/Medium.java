@@ -67,6 +67,9 @@ public class Medium {
     }
 }
 
+/**
+ * 3
+ */
 class Medium1 {
 //    public int lengthOfLongestSubstring(String s) {
 //        if (s.isEmpty()) {
