@@ -9,7 +9,10 @@ package algorithm.java;
  * @Description:
  **/
 
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 2
@@ -225,6 +228,59 @@ class Medium3 {
             }
         }
         return maxArea;
+    }
+}
+
+/**
+ * 15
+ */
+class Medium4 {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> lists = new LinkedList<>();
+        if (nums == null || nums.length < 3) {
+            return lists;
+        }
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            int left = i + 1;
+            int right = nums.length - 1;
+            if (nums[i] > 0) {
+                break;
+            }
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            while (left < right) {
+                if (nums[i] + nums[left] + nums[right] == 0) {
+                    while (left < right && nums[left] == nums[left + 1]) {
+                        left++;
+                    }
+                    while (left < right && nums[right] == nums[right - 1]) {
+                        right--;
+                    }
+                    List<Integer> list = new LinkedList<>();
+                    Integer integer1 = nums[i];
+                    Integer integer2 = nums[left];
+                    Integer integer3 = nums[right];
+                    list.add(integer1);
+                    list.add(integer2);
+                    list.add(integer3);
+                    lists.add(list);
+                    left++;
+                    right--;
+                } else if (nums[i] + nums[left] + nums[right] < 0) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+        }
+        return lists;
+    }
+
+    public static void main(String[] args) {
+        Medium4 medium4 = new Medium4();
+        medium4.threeSum(new int[] {-1,0,1,2,-1,-5});
     }
 }
 
