@@ -186,3 +186,45 @@ class Medium2 {
     }
 }
 
+/**
+ * 11
+ */
+class Medium3 {
+//    public int maxArea(int[] height) {
+//        int maxArea = 0;
+//        for (int i = 0; i < height.length; i++) {
+//            for (int j = i + 1; j < height.length; j++) {
+//                int area = 0;
+//                int h = j - i;
+//                int len = Math.max(height[i], height[j]);
+//                area = h * len;
+//                if (area > maxArea) {
+//                    maxArea = area;
+//                }
+//            }
+//        }
+//        return maxArea;
+//    }
+
+    public int maxArea(int[] height) {
+        int maxArea = 0;
+        if (height == null || height.length == 0) {
+            return 0;
+        }
+        int i = 0;
+        int j = height.length - 1;
+        while (i != j) {
+            int area = (j - i) * Math.min(height[i], height[j]);
+            if (area > maxArea) {
+                maxArea = area;
+            }
+            if (height[i] < height[j]) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+        return maxArea;
+    }
+}
+
