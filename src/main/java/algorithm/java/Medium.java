@@ -119,3 +119,70 @@ class Medium1 {
     }
 }
 
+/**
+ * 5
+ */
+class Medium2 {
+//    public String longestPalindrome(String s) {
+//        String result = "";
+//        for (int i = 0; i < s.length(); i++) {
+//            List<Character> list = new ArrayList<>();
+//            String re;
+//            for (int j = i; j < s.length(); j++) {
+//                list.add(s.charAt(j));
+//                boolean flag = false;
+//                for (int k = 0; k <= list.size()/2; k++) {
+//                    if (!list.get(k).equals(list.get(list.size() - 1 - k))) {
+//                        flag = true;
+//                        break;
+//                    }
+//                }
+//                if (flag) {
+//                    continue;
+//                }
+//                re = s.substring(i, j + 1);
+//                if (re.length() > result.length()) {
+//                    result = re;
+//                }
+//            }
+//        }
+//        return result;
+//    }
+
+    public String longestPalindrome(String s) {
+        if (s.isEmpty() || s.length() == 1) {
+            return s;
+        }
+        String re = s.substring(0, 1);
+        for (int i = 0; i < s.length(); i++) {
+            String oneString = huiwen(s, i, i);
+            String twoString = huiwen(s, i, i + 1);
+            String maxString = oneString.length() > twoString.length() ? oneString : twoString;
+            if (maxString.length() > re.length()) {
+                re = maxString;
+            }
+        }
+        return re;
+    }
+
+    public String huiwen(String s, int left, int right) {
+        int i = left;
+        int j = right;
+        while (i >=0 && j < s.length()) {
+            if (s.charAt(i) == s.charAt(j)) {
+                j++;
+                i--;
+            } else {
+                break;
+            }
+        }
+        return s.substring(i + 1, j);
+    }
+
+    public static void main(String[] args) {
+        Medium2 medium = new Medium2();
+        String s = medium.longestPalindrome("cbbd");
+        System.out.println(s);
+    }
+}
+
