@@ -229,6 +229,12 @@ class Medium3 {
         }
         return maxArea;
     }
+
+    public static void main(String[] args) {
+        Medium3 medium3 = new Medium3();
+        int re = medium3.maxArea(new int[] {1,8,6,2,5,4,8,3,7});
+        System.out.println(re);
+    }
 }
 
 /**
