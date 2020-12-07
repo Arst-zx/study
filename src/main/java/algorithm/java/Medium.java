@@ -9,10 +9,7 @@ package algorithm.java;
  * @Description:
  **/
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 2
@@ -287,6 +284,50 @@ class Medium4 {
     public static void main(String[] args) {
         Medium4 medium4 = new Medium4();
         medium4.threeSum(new int[] {-1,0,1,2,-1,-5});
+    }
+}
+
+/**
+ * 17
+ */
+class Medium5 {
+    public List<String> letterCombinations(String digits) {
+        List<String> list = new LinkedList<>();
+        if (digits.length() == 0) {
+            return list;
+        }
+        Map<Character, String> map = new HashMap<>(10);
+        map.put('2', "abc");
+        map.put('3', "def");
+        map.put('4', "ghi");
+        map.put('5', "jkl");
+        map.put('6', "mno");
+        map.put('7', "pqrs");
+        map.put('8', "tuv");
+        map.put('9', "wxyz");
+        backCombinations(list, map, digits, 0, new StringBuffer());
+        return list;
+    }
+
+    public void backCombinations(List<String> list, Map<Character, String> map, String digits, int index, StringBuffer stringBuffer) {
+        if (index == digits.length()) {
+            list.add(stringBuffer.toString());
+        } else {
+            char digit = digits.charAt(index);
+            String letters = map.get(digit);
+            int lettersCount = letters.length();
+            for (int i = 0; i < lettersCount; i++) {
+                stringBuffer.append(letters.charAt(i));
+                backCombinations(list, map, digits, index + 1, stringBuffer);
+                stringBuffer.deleteCharAt(index);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Medium5 medium5 = new Medium5();
+        List list = medium5.letterCombinations("234");
+        System.out.println(list);
     }
 }
 
