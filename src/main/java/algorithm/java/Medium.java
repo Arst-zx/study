@@ -364,3 +364,55 @@ class Medium5 {
     }
 }
 
+/**
+ * 19
+ */
+class Medium6 {
+//    public ListNode removeNthFromEnd(ListNode head, int n) {
+//        List<ListNode> listNodes = new LinkedList<>();
+//        while (head != null) {
+//            listNodes.add(head);
+//            head = head.next;
+//        }
+//        ListNode listNode = new ListNode();
+//        ListNode result = listNode;
+//        for (int i = 0; i < listNodes.size(); i++) {
+//            if (i == listNodes.size() - n) {
+//                continue;
+//            }
+//            listNode.next = listNodes.get(i);
+//            listNode.next.next = null;
+//            listNode = listNode.next;
+//        }
+//        return result.next;
+//    }
+
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode listNode = new ListNode();
+        listNode.next = head;
+        if (head == null) {
+            return null;
+        }
+        ListNode end = listNode;
+        ListNode first = listNode;
+        for (int i = 0; i < n; i++) {
+            end = end.next;
+        }
+        while (end.next != null) {
+            first = first.next;
+            end = end.next;
+        }
+        if (first.next != null) {
+            first.next = first.next.next;
+        }
+        return listNode.next;
+    }
+
+    public static void main(String[] args) {
+        Medium6 medium6 = new Medium6();
+        ListNode listNode = new ListNode(1);
+//        listNode.next = new ListNode(2);
+        ListNode listNode1 = medium6.removeNthFromEnd(listNode, 1);
+        System.out.println(listNode1);
+    }
+}
