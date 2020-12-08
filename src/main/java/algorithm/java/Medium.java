@@ -291,12 +291,45 @@ class Medium4 {
  * 17
  */
 class Medium5 {
+//    public List<String> letterCombinations(String digits) {
+//        List<String> list = new LinkedList<>();
+//        if (digits.length() == 0) {
+//            return list;
+//        }
+//        Map<Character, String> map = new HashMap<>(10);
+//        map.put('2', "abc");
+//        map.put('3', "def");
+//        map.put('4', "ghi");
+//        map.put('5', "jkl");
+//        map.put('6', "mno");
+//        map.put('7', "pqrs");
+//        map.put('8', "tuv");
+//        map.put('9', "wxyz");
+//        backCombinations(list, map, digits, 0, new StringBuffer());
+//        return list;
+//    }
+//
+//    public void backCombinations(List<String> list, Map<Character, String> map, String digits, int index, StringBuffer stringBuffer) {
+//        if (index == digits.length()) {
+//            list.add(stringBuffer.toString());
+//        } else {
+//            char digit = digits.charAt(index);
+//            String letters = map.get(digit);
+//            int lettersCount = letters.length();
+//            for (int i = 0; i < lettersCount; i++) {
+//                stringBuffer.append(letters.charAt(i));
+//                backCombinations(list, map, digits, index + 1, stringBuffer);
+//                stringBuffer.deleteCharAt(index);
+//            }
+//        }
+//    }
+
     public List<String> letterCombinations(String digits) {
         List<String> list = new LinkedList<>();
         if (digits.length() == 0) {
             return list;
         }
-        Map<Character, String> map = new HashMap<>(10);
+        Map<Character, String> map = new HashMap<>();
         map.put('2', "abc");
         map.put('3', "def");
         map.put('4', "ghi");
@@ -305,20 +338,20 @@ class Medium5 {
         map.put('7', "pqrs");
         map.put('8', "tuv");
         map.put('9', "wxyz");
-        backCombinations(list, map, digits, 0, new StringBuffer());
+        StringBuffer stringBuffer = new StringBuffer();
+        back(map, list, stringBuffer, 0, digits);
         return list;
     }
 
-    public void backCombinations(List<String> list, Map<Character, String> map, String digits, int index, StringBuffer stringBuffer) {
+    public void back(Map<Character, String> map, List<String> list, StringBuffer stringBuffer, int index, String digits) {
         if (index == digits.length()) {
             list.add(stringBuffer.toString());
         } else {
-            char digit = digits.charAt(index);
-            String letters = map.get(digit);
-            int lettersCount = letters.length();
-            for (int i = 0; i < lettersCount; i++) {
+            char ch = digits.charAt(index);
+            String letters = map.get(ch);
+            for (int i = 0; i < letters.length(); i++) {
                 stringBuffer.append(letters.charAt(i));
-                backCombinations(list, map, digits, index + 1, stringBuffer);
+                back(map, list, stringBuffer, index + 1, digits);
                 stringBuffer.deleteCharAt(index);
             }
         }
