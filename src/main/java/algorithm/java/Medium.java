@@ -451,3 +451,48 @@ class Medium7 {
         System.out.println(list);
     }
 }
+
+/**
+ * 31
+ */
+class Medium8 {
+    public void nextPermutation(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            return;
+        }
+        int n = nums.length - 2;
+        int m = nums.length;
+        while (n >= 0) {
+            if (nums[n] < nums[n + 1]) {
+                int temp = nums[n];
+                int l = n + 1;
+                while (l < m - 1 && nums[l + 1] > temp) {
+                    l++;
+                }
+                int temp2 = nums[n];
+                int min = nums[l];
+                nums[n] = min;
+                nums[l] = temp2;
+                for (int i = n + 1; i < (m + n)/2 + 1; i++) {
+                    int temp3 = nums[i];
+                    nums[i] = nums[m + n - i];
+                    nums[m + n - i] = temp3;
+                }
+                return;
+            }
+            n--;
+        }
+        for (int i = 0; i < m/2; i++) {
+            int temp = nums[i];
+            nums[i] = nums[m - 1 - i];
+            nums[m - 1 - i] = temp;
+        }
+    }
+
+    public static void main(String[] args) {
+        Medium8 medium8 = new Medium8();
+        int[] nums = new int[] {1,4,6,2,1};
+        medium8.nextPermutation(nums);
+        System.out.println(nums);
+    }
+}
