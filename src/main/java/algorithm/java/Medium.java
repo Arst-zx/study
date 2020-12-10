@@ -497,6 +497,9 @@ class Medium8 {
     }
 }
 
+/**
+ * 33
+ */
 class Medium9 {
 //    public int search(int[] nums, int target) {
 //        for (int i = 0; i < nums.length; i++) {
@@ -539,5 +542,36 @@ class Medium9 {
         Medium9 medium9 = new Medium9();
         int result = medium9.search(new int[] {14,15,16,17,0,1,2,3,4,5,6}, 15);
         System.out.println(result);
+    }
+}
+
+/**
+ * 34
+ */
+class Medium10 {
+    public int[] searchRange(int[] nums, int target) {
+        int[] result = new int[2];
+        result[0] = -1;
+        result[1] = -1;
+        if (nums == null || nums.length == 0) {
+            return result;
+        }
+        int l = 0;
+        int r = nums.length - 1;
+        while (l <= r) {
+            if (nums[l] == target) {
+                result[0] = l;
+                break;
+            }
+            l++;
+        }
+        while (r >= 0) {
+            if (nums[r] == target) {
+                result[1] = r;
+                break;
+            }
+            r--;
+        }
+        return result;
     }
 }
