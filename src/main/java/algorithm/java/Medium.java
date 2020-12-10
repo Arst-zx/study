@@ -576,9 +576,7 @@ class Medium10 {
 //    }
 
     public int[] searchRange(int[] nums, int target) {
-        int[] result = new int[2];
-        result[0] = -1;
-        result[1] = -1;
+        int[] result = new int[] {-1, -1};
         if (nums == null || nums.length == 0) {
             return result;
         }
