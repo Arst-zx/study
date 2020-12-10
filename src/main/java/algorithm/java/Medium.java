@@ -620,3 +620,38 @@ class Medium10 {
         System.out.println(result);
     }
 }
+
+/**
+ * 39
+ */
+class Medium11 {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> lists = new ArrayList<>();
+        Deque<Integer> list = new ArrayDeque<>();
+        dfs(candidates, target, 0, lists, list);
+        return lists;
+    }
+
+    public void dfs(int[] candidates, int target, int left, List<List<Integer>> lists, Deque<Integer> list) {
+        if (left == candidates.length) {
+            return;
+        }
+        if (target == 0) {
+            lists.add(new ArrayList<>(list));
+            System.out.println(lists);
+            return;
+        }
+        dfs(candidates, target, left + 1, lists, list);
+        if (target - candidates[left] >= 0) {
+            list.addLast(candidates[left]);
+            System.out.println(list);
+            dfs(candidates, target - candidates[left], left, lists, list);
+            list.removeLast();
+        }
+    }
+
+    public static void main(String[] args) {
+        Medium11 medium11 = new Medium11();
+        medium11.combinationSum(new int[] {2,3,6,7}, 7);
+    }
+}
