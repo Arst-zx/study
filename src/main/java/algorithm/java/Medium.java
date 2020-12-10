@@ -549,6 +549,32 @@ class Medium9 {
  * 34
  */
 class Medium10 {
+//    public int[] searchRange(int[] nums, int target) {
+//        int[] result = new int[2];
+//        result[0] = -1;
+//        result[1] = -1;
+//        if (nums == null || nums.length == 0) {
+//            return result;
+//        }
+//        int l = 0;
+//        int r = nums.length - 1;
+//        while (l <= r) {
+//            if (nums[l] == target) {
+//                result[0] = l;
+//                break;
+//            }
+//            l++;
+//        }
+//        while (r >= 0) {
+//            if (nums[r] == target) {
+//                result[1] = r;
+//                break;
+//            }
+//            r--;
+//        }
+//        return result;
+//    }
+
     public int[] searchRange(int[] nums, int target) {
         int[] result = new int[2];
         result[0] = -1;
@@ -556,22 +582,43 @@ class Medium10 {
         if (nums == null || nums.length == 0) {
             return result;
         }
+        if (nums.length == 1 && target == nums[0]) {
+            result[0] = 0;
+            result[1] = 0;
+            return result;
+        }
         int l = 0;
         int r = nums.length - 1;
         while (l <= r) {
-            if (nums[l] == target) {
-                result[0] = l;
-                break;
+            int m = (l + r)/2;
+            if (nums[m] == target) {
+                while (m - 1 >= 0 && nums[m] == nums[m - 1]) {
+                    m--;
+                }
+                result[0] = m;
+                while (m + 1 < nums.length && nums[m] == nums[m + 1]) {
+                    m++;
+                }
+                result[1] = m;
+                return result;
+            } else if (nums[m] > target) {
+                while (m - 1 >= 0 && nums[m] == nums[m - 1]) {
+                    m--;
+                }
+                r = m - 1;
+            } else if (nums[m] < target) {
+                while (m + 1 < nums.length && nums[m] == nums[m + 1]) {
+                    m++;
+                }
+                l = m + 1;
             }
-            l++;
-        }
-        while (r >= 0) {
-            if (nums[r] == target) {
-                result[1] = r;
-                break;
-            }
-            r--;
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+        Medium10 medium10 = new Medium10();
+        int[] result = medium10.searchRange(new int[] {2,4}, 4);
+        System.out.println(result);
     }
 }
