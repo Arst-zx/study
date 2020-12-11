@@ -759,31 +759,31 @@ class Medium12 {
 //    }
 
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
+        List<List<Integer>> lists = new ArrayList<>();
         int[] visited = new int[nums.length];
-        backtrack(res, nums, new ArrayList<Integer>(), visited);
-        return res;
+        backtrack(lists, nums, new ArrayList<>(), visited);
+        return lists;
     }
 
-    private void backtrack(List<List<Integer>> res, int[] nums, ArrayList<Integer> tmp, int[] visited) {
-        if (tmp.size() == nums.length) {
-            res.add(new ArrayList<>(tmp));
+    private void backtrack(List<List<Integer>> lists, int[] nums, ArrayList<Integer> list, int[] visited) {
+        if (list.size() == nums.length) {
+            lists.add(new ArrayList<>(list));
             return;
         }
         for (int i = 0; i < nums.length; i++) {
             if (visited[i] == 0) {
                 visited[i] = 1;
-                tmp.add(nums[i]);
-                backtrack(res, nums, tmp, visited);
+                list.add(nums[i]);
+                backtrack(lists, nums, list, visited);
                 visited[i] = 0;
-                tmp.remove(tmp.size() - 1);
+                list.remove(list.size() - 1);
             }
         }
     }
 
     public static void main(String[] args) {
         Medium12 medium12 = new Medium12();
-        List<List<Integer>> lists = medium12.permute(new int[] {1,2,3});
+        List<List<Integer>> lists = medium12.permute(new int[] {1,2});
         System.out.println(lists);
     }
 }
