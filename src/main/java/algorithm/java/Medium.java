@@ -787,3 +787,38 @@ class Medium12 {
         System.out.println(lists);
     }
 }
+
+/**
+ * 48
+ */
+class Medium13 {
+    public void rotate(int[][] matrix) {
+        int len = matrix.length;
+        if (len == 0) {
+            return;
+        }
+        for (int i = 0; i < matrix.length/2; i++) {
+            int[] temp = matrix[i];
+            matrix[i] = matrix[len - 1 - i];
+            matrix[len - 1 - i] = temp;
+        }
+        for (int i = 0; i < len; i++) {
+            for (int j = len - 1; j >= 0; j--) {
+                if (i != 0 && j == i) {
+                    break;
+                }
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Medium13 medium13 = new Medium13();
+        int[][] matrix = new int[][] {{1,2,3},{4,5,6},{7,8,9}};
+        medium13.rotate(matrix);
+        System.out.println(matrix);
+
+    }
+}
