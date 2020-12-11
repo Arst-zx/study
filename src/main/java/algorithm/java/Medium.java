@@ -793,17 +793,13 @@ class Medium12 {
  */
 class Medium13 {
     public void rotate(int[][] matrix) {
-        int len = matrix.length;
-        if (len == 0) {
-            return;
-        }
         for (int i = 0; i < matrix.length/2; i++) {
             int[] temp = matrix[i];
-            matrix[i] = matrix[len - 1 - i];
-            matrix[len - 1 - i] = temp;
+            matrix[i] = matrix[matrix.length - 1 - i];
+            matrix[matrix.length - 1 - i] = temp;
         }
-        for (int i = 0; i < len; i++) {
-            for (int j = len - 1; j >= 0; j--) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = matrix.length - 1; j >= 0; j--) {
                 if (i != 0 && j == i) {
                     break;
                 }
