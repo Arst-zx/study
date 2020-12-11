@@ -817,3 +817,33 @@ class Medium13 {
         System.out.println(matrix);
     }
 }
+
+/**
+ * 49
+ */
+class Medium14 {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        if (strs.length == 0) {
+            return new ArrayList<>();
+        }
+        Map<String, List<String>> map = new HashMap<>();
+        for (String str : strs) {
+            char[] chars = str.toCharArray();
+            Arrays.sort(chars);
+            String key = String.valueOf(chars);
+            if (map.containsKey(key)) {
+                map.get(key).add(str);
+            } else {
+                map.put(key, new ArrayList<>());
+                map.get(key).add(str);
+            }
+        }
+        return new ArrayList<>(map.values());
+    }
+
+    public static void main(String[] args) {
+        Medium14 medium14 = new Medium14();
+        List<List<String>> lists = medium14.groupAnagrams(new String[] {"ate", "eat"});
+        System.out.println(lists);
+    }
+}
