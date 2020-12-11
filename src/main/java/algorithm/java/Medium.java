@@ -660,29 +660,45 @@ class Medium11 {
  * 46
  */
 class Medium12 {
-    public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> lists = new ArrayList<>();
-        if (nums.length == 0) {
-            return lists;
-        }
-        List<Integer> list = new ArrayList<>();
-        for (Integer num : nums) {
-            list.add(num);
-        }
-        dfs(lists, list, nums, 0);
-        return lists;
-    }
-
-    public void dfs(List<List<Integer>> lists, List<Integer> list, int[] nums, int start) {
-        if (start == nums.length) {
-            lists.add(new ArrayList<>(list));
-        }
-        for (int i = start; i < nums.length; i++) {
-            Collections.swap(list, start, i);
-            dfs(lists, list, nums, start + 1);
-            Collections.swap(list, start, i);
-        }
-    }
+//    public List<List<Integer>> permute(int[] nums) {
+//        List<List<Integer>> lists = new ArrayList<>();
+//        if (nums.length == 0) {
+//            return lists;
+//        }
+//        List<Integer> list = new ArrayList<>();
+//        for (Integer num : nums) {
+//            list.add(num);
+//        }
+//        int sum = 0;
+//        dfs(lists, list, nums, 0, sum);
+//        return lists;
+//    }
+//
+//    public void dfs(List<List<Integer>> lists, List<Integer> list, int[] nums, int start, int sum) {
+//        sum++;
+//        System.out.println("第" + sum + "次进入dfs");
+//        if (start == nums.length) {
+//            List<Integer> list1 = new ArrayList<>(list);
+//            System.out.println("第" + sum + "次将list1 " + list1 + " 加入lists" + ",start=" + start + ",交换前list=" + list);
+//            lists.add(list1);
+//        }
+//        for (int i = start; i < nums.length; i++) {
+//            System.out.println("第" + sum + "次进入循环");
+//            System.out.println("start=" + start + ",i=" + i + ",交换前list=" + list);
+//
+//            Collections.swap(list, start, i);
+//
+//            System.out.println("start=" + start + ",i=" + i + ",交换后list=" + list);
+//
+//            dfs(lists, list, nums, start + 1, sum);
+//
+//            System.out.println("第" + sum + "次进入循环");
+//
+//            Collections.swap(list, start, i);
+//
+//            System.out.println("start=" + start + ",i=" + i + ",恢复list=" + list);
+//        }
+//    }
 
 //    public List<List<Integer>> permute(int[] nums) {
 //        List<List<Integer>> lists = new ArrayList<>();
@@ -708,6 +724,62 @@ class Medium12 {
 //            Collections.swap(list, first, i);
 //        }
 //    }
+
+//    public List<List<Integer>> permute(int[] nums) {
+//        int len = nums.length;
+//        // 使用一个动态数组保存所有可能的全排列
+//        List<List<Integer>> lists = new ArrayList<>();
+//        if (len == 0) {
+//            return lists;
+//        }
+//
+//        boolean[] used = new boolean[len];
+//        List<Integer> list = new ArrayList<>(len);
+//
+//        dfs(nums, len, 0, list, used, lists);
+//        return lists;
+//    }
+//
+//    private void dfs(int[] nums, int len, int depth, List<Integer> list, boolean[] used, List<List<Integer>> lists) {
+//        if (depth == len) {
+//            lists.add(new ArrayList<>(list));
+//            return;
+//        }
+//        for (int i = 0; i < len; i++) {
+//            if (!used[i]) {
+//                list.add(nums[i]);
+//                used[i] = true;
+//                System.out.println("  递归之前 => " + list);
+//                dfs(nums, len, depth + 1, list, used, lists);
+//                used[i] = false;
+//                list.remove(list.size() - 1);
+//                System.out.println("递归之后 => " + list);
+//            }
+//        }
+//    }
+
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        int[] visited = new int[nums.length];
+        backtrack(res, nums, new ArrayList<Integer>(), visited);
+        return res;
+    }
+
+    private void backtrack(List<List<Integer>> res, int[] nums, ArrayList<Integer> tmp, int[] visited) {
+        if (tmp.size() == nums.length) {
+            res.add(new ArrayList<>(tmp));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (visited[i] == 0) {
+                visited[i] = 1;
+                tmp.add(nums[i]);
+                backtrack(res, nums, tmp, visited);
+                visited[i] = 0;
+                tmp.remove(tmp.size() - 1);
+            }
+        }
+    }
 
     public static void main(String[] args) {
         Medium12 medium12 = new Medium12();
