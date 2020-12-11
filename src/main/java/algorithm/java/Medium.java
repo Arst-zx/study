@@ -655,3 +655,63 @@ class Medium11 {
         medium11.combinationSum(new int[] {2,3,6,7}, 7);
     }
 }
+
+/**
+ * 46
+ */
+class Medium12 {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> lists = new ArrayList<>();
+        if (nums.length == 0) {
+            return lists;
+        }
+        List<Integer> list = new ArrayList<>();
+        for (Integer num : nums) {
+            list.add(num);
+        }
+        dfs(lists, list, nums, 0);
+        return lists;
+    }
+
+    public void dfs(List<List<Integer>> lists, List<Integer> list, int[] nums, int start) {
+        if (start == nums.length) {
+            lists.add(new ArrayList<>(list));
+        }
+        for (int i = start; i < nums.length; i++) {
+            Collections.swap(list, start, i);
+            dfs(lists, list, nums, start + 1);
+            Collections.swap(list, start, i);
+        }
+    }
+
+//    public List<List<Integer>> permute(int[] nums) {
+//        List<List<Integer>> lists = new ArrayList<>();
+//        List<Integer> list = new ArrayList<>();
+//        for (int num : nums) {
+//            list.add(num);
+//        }
+//        backtrack(nums, list, lists, 0);
+//        return lists;
+//    }
+//
+//    public void backtrack(int[] nums, List<Integer> list, List<List<Integer>> lists, int first) {
+//        // 所有数都填完了
+//        if (first == nums.length) {
+//            lists.add(new ArrayList<>(list));
+//        }
+//        for (int i = first; i < nums.length; i++) {
+//            // 动态维护数组
+//            Collections.swap(list, first, i);
+//            // 继续递归填下一个数
+//            backtrack(nums, list, lists, first + 1);
+//            // 撤销操作
+//            Collections.swap(list, first, i);
+//        }
+//    }
+
+    public static void main(String[] args) {
+        Medium12 medium12 = new Medium12();
+        List<List<Integer>> lists = medium12.permute(new int[] {1,2,3});
+        System.out.println(lists);
+    }
+}
