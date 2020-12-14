@@ -845,3 +845,30 @@ class Medium14 {
         System.out.println(lists);
     }
 }
+
+/**
+ * 55
+ */
+class Medium15 {
+    public boolean canJump(int[] nums) {
+        int max = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i <= max) {
+                if (i + nums[i] > max) {
+                    max = i + nums[i];
+                }
+                if (max >= nums.length - 1) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Medium15 medium15 = new Medium15();
+        int[] nums = new int[] {1,2,3,0,0,0,4};
+        boolean flag = medium15.canJump(nums);
+        System.out.println(flag);
+    }
+}
