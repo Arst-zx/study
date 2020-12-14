@@ -831,12 +831,10 @@ class Medium14 {
             char[] chars = str.toCharArray();
             Arrays.sort(chars);
             String key = String.valueOf(chars);
-            if (map.containsKey(key)) {
-                map.get(key).add(str);
-            } else {
+            if (!map.containsKey(key)) {
                 map.put(key, new ArrayList<>());
-                map.get(key).add(str);
             }
+            map.get(key).add(str);
         }
         return new ArrayList<>(map.values());
     }
