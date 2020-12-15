@@ -872,3 +872,48 @@ class Medium15 {
         System.out.println(flag);
     }
 }
+
+/**
+ * 56
+ */
+class Medium16 {
+    public int[][] merge(int[][] intervals) {
+        int len = intervals.length;
+        if (len == 0) {
+            return new int[len][2];
+        }
+        Arrays.sort(intervals, Comparator.comparingInt(o -> o[0]));
+        for (int i = 0; i < len; i++) {
+            for (int j = i; j < len; j++) {
+                if (intervals[i][0] > intervals[j][0]) {
+                    int[] temp = intervals[i];
+                    intervals[i] = intervals[j];
+                    intervals[j] = temp;
+                }
+            }
+        }
+        List<int[]> list = new LinkedList<>();
+        int min = intervals[0][0];
+        int max = intervals[0][1];
+        for (int i = 0; i < len; i++) {
+            if (intervals[i][0] > max) {
+                list.add(new int[] {min, max});
+                min = intervals[i][0];
+                max = intervals[i][1];
+            }
+            if (intervals[i][0] <= max && intervals[i][1] > max) {
+                max = intervals[i][1];
+            }
+            if (i == len - 1) {
+                list.add(new int[] {min, max});
+            }
+        }
+        return list.toArray(new int[list.size()][2]);
+    }
+
+    public static void main(String[] args) {
+        Medium16 medium16 = new Medium16();
+        int[][] nums = medium16.merge(new int[][] {{1,4},{0,1}});
+        System.out.println(nums);
+    }
+}
