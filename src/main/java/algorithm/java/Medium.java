@@ -883,15 +883,15 @@ class Medium16 {
             return new int[len][2];
         }
         Arrays.sort(intervals, Comparator.comparingInt(o -> o[0]));
-        for (int i = 0; i < len; i++) {
-            for (int j = i; j < len; j++) {
-                if (intervals[i][0] > intervals[j][0]) {
-                    int[] temp = intervals[i];
-                    intervals[i] = intervals[j];
-                    intervals[j] = temp;
-                }
-            }
-        }
+//        for (int i = 0; i < len; i++) {
+//            for (int j = i; j < len; j++) {
+//                if (intervals[i][0] > intervals[j][0]) {
+//                    int[] temp = intervals[i];
+//                    intervals[i] = intervals[j];
+//                    intervals[j] = temp;
+//                }
+//            }
+//        }
         List<int[]> list = new LinkedList<>();
         int min = intervals[0][0];
         int max = intervals[0][1];
