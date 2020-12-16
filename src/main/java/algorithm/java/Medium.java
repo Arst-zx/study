@@ -969,4 +969,9 @@ class Medium18 {
         }
         return result[m - 1][n - 1];
     }
+
+    public static void main(String[] args) {
+        Medium18 medium18 = new Medium18();
+        medium18.minPathSum(new int[][] {{1,3,1},{1,5,1},{4,2,1}});
+    }
 }
