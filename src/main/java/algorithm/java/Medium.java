@@ -1052,3 +1052,32 @@ class Medium19 {
         medium19.sortColors(new int[] {2,0,2,1,1,0});
     }
 }
+
+class Medium20 {
+    public List<List<Integer>> subsets(int[] nums) {
+        dfs(0, nums);
+        return lists;
+    }
+
+    List<Integer> list = new ArrayList<>();
+    List<List<Integer>> lists = new ArrayList<>();
+
+    public void dfs(int cur, int[] nums) {
+        if (cur == nums.length) {
+            lists.add(new ArrayList<>(list));
+            System.out.println(lists);
+            return;
+        }
+        list.add(nums[cur]);
+        System.out.println(list);
+        dfs(cur + 1, nums);
+        list.remove(list.size() - 1);
+        System.out.println(list);
+        dfs(cur + 1, nums);
+    }
+
+    public static void main(String[] args) {
+        Medium20 medium20 = new Medium20();
+        medium20.subsets(new int[] {1,2,3});
+    }
+}
