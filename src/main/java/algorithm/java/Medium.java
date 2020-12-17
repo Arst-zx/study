@@ -975,3 +975,47 @@ class Medium18 {
         medium18.minPathSum(new int[][] {{1,3,1},{1,5,1},{4,2,1}});
     }
 }
+
+/**
+ * 75
+ */
+class Medium19 {
+    public void sortColors(int[] nums) {
+        int n = nums.length;
+        int l = 0;
+        int r = n - 1;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == 0) {
+                continue;
+            }
+            for (int j = i + 1; j < n; j++) {
+                if (nums[j] == 0) {
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+                    break;
+                }
+            }
+        }
+        for (int i = n - 1; i >= 0; i--) {
+            if (nums[i] == 0) {
+                return;
+            }
+            if (nums[i] == 2) {
+                continue;
+            }
+            for (int j = i - 1; j >= 0; j--) {
+                if (nums[j] == 2) {
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+                    break;
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Medium19 medium19 = new Medium19();medium19.sortColors(new int[] {0,0,1});
+    }
+}
