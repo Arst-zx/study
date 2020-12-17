@@ -1065,14 +1065,11 @@ class Medium20 {
     public void dfs(int cur, int[] nums) {
         if (cur == nums.length) {
             lists.add(new ArrayList<>(list));
-            System.out.println(lists);
             return;
         }
         list.add(nums[cur]);
-        System.out.println(list);
         dfs(cur + 1, nums);
         list.remove(list.size() - 1);
-        System.out.println(list);
         dfs(cur + 1, nums);
     }
 
