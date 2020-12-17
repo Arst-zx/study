@@ -980,39 +980,42 @@ class Medium18 {
  * 75
  */
 class Medium19 {
+//    public void sortColors(int[] nums) {
+//        int n = nums.length;
+//        int l = 0;
+//        int r = n - 1;
+//        for (int i = 0; i < n; i++) {
+//            if (nums[i] == 0) {
+//                continue;
+//            }
+//            for (int j = i + 1; j < n; j++) {
+//                if (nums[j] == 0) {
+//                    int temp = nums[i];
+//                    nums[i] = nums[j];
+//                    nums[j] = temp;
+//                    break;
+//                }
+//            }
+//        }
+//        for (int i = n - 1; i >= 0; i--) {
+//            if (nums[i] == 0) {
+//                return;
+//            }
+//            if (nums[i] == 2) {
+//                continue;
+//            }
+//            for (int j = i - 1; j >= 0; j--) {
+//                if (nums[j] == 2) {
+//                    int temp = nums[i];
+//                    nums[i] = nums[j];
+//                    nums[j] = temp;
+//                    break;
+//                }
+//            }
+//        }
+//    }
     public void sortColors(int[] nums) {
-        int n = nums.length;
-        int l = 0;
-        int r = n - 1;
-        for (int i = 0; i < n; i++) {
-            if (nums[i] == 0) {
-                continue;
-            }
-            for (int j = i + 1; j < n; j++) {
-                if (nums[j] == 0) {
-                    int temp = nums[i];
-                    nums[i] = nums[j];
-                    nums[j] = temp;
-                    break;
-                }
-            }
-        }
-        for (int i = n - 1; i >= 0; i--) {
-            if (nums[i] == 0) {
-                return;
-            }
-            if (nums[i] == 2) {
-                continue;
-            }
-            for (int j = i - 1; j >= 0; j--) {
-                if (nums[j] == 2) {
-                    int temp = nums[i];
-                    nums[i] = nums[j];
-                    nums[j] = temp;
-                    break;
-                }
-            }
-        }
+
     }
 
     public static void main(String[] args) {
