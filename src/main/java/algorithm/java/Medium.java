@@ -1016,7 +1016,7 @@ class Medium19 {
 //    }
     public void sortColors(int[] nums) {
         int numsLength = nums.length;
-
+        int l = 0;
     }
 
     public static void main(String[] args) {
