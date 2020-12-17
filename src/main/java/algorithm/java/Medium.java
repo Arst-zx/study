@@ -1014,12 +1014,41 @@ class Medium19 {
 //            }
 //        }
 //    }
+
+//    public void sortColors(int[] nums) {
+//        for (int i = 0; i < nums.length; i++) {
+//            for (int j = i; j < nums.length; j++) {
+//                if (nums[i] > nums[j]) {
+//                    int temp = nums[i];
+//                    nums[i] = nums[j];
+//                    nums[j] = temp;
+//                }
+//            }
+//        }
+//    }
+
     public void sortColors(int[] nums) {
-        int numsLength = nums.length;
-        int l = 0;
+        int length = nums.length;
+        int left = 0;
+        int right = length - 1;
+        for (int i = 0; i < length; i++) {
+            if (nums[i] == 0) {
+                int temp = nums[i];
+                nums[i] = nums[left];
+                nums[left] = temp;
+                left++;
+            }
+            while (i <= right && nums[i] == 2) {
+                int temp = nums[i];
+                nums[i] = nums[right];
+                nums[right] = temp;
+                right--;
+            }
+        }
     }
 
     public static void main(String[] args) {
-        Medium19 medium19 = new Medium19();medium19.sortColors(new int[] {0,0,1});
+        Medium19 medium19 = new Medium19();
+        medium19.sortColors(new int[] {2,0,2,1,1,0});
     }
 }
