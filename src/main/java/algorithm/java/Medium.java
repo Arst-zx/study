@@ -1053,6 +1053,9 @@ class Medium19 {
     }
 }
 
+/**
+ * 78
+ */
 class Medium20 {
     public List<List<Integer>> subsets(int[] nums) {
         dfs(0, nums);
@@ -1076,5 +1079,14 @@ class Medium20 {
     public static void main(String[] args) {
         Medium20 medium20 = new Medium20();
         medium20.subsets(new int[] {1,2,3});
+    }
+}
+
+/**
+ * 79
+ */
+class Medium21 {
+    public boolean exist(char[][] board, String word) {
+
     }
 }
