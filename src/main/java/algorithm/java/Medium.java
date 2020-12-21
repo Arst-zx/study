@@ -1083,10 +1083,43 @@ class Medium20 {
 }
 
 /**
- * 79
+ * 79 难
  */
 class Medium21 {
     public boolean exist(char[][] board, String word) {
+        int length = word.length();
+        return true;
+    }
+}
 
+/**
+ * 94
+ */
+class Medium22 {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> list = new LinkedList<>();
+        inorder(root, list);
+        return list;
+    }
+
+    public void inorder(TreeNode treeNode, List<Integer> list) {
+        if (treeNode == null) {
+            return;
+        }
+        inorder(treeNode.left, list);
+        list.add(treeNode.val);
+        inorder(treeNode.right, list);
+    }
+
+    public static void main(String[] args) {
+        Medium22 medium22 = new Medium22();
+        TreeNode treeNode = new TreeNode(1);
+        treeNode.left = new TreeNode(2);
+        treeNode.right = new TreeNode(3);
+        treeNode.left.left = new TreeNode(4);
+        treeNode.left.right = new TreeNode(5);
+        treeNode.right.left = new TreeNode(6);
+        treeNode.right.right = new TreeNode(7);
+        medium22.inorderTraversal(treeNode);
     }
 }
