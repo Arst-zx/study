@@ -1183,3 +1183,35 @@ class Medium23 {
         System.out.println(result);
     }
 }
+
+/**
+ * 98
+ */
+class Medium24 {
+    long result = Long.MIN_VALUE;
+    public boolean isValidBST(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        boolean left = isValidBST(root.left);
+        if (!left) {
+            return false;
+        }
+        if (root.val <= result) {
+            return false;
+        }
+        result = root.val;
+        boolean right = isValidBST(root.right);
+        return right;
+    }
+
+    public static void main(String[] args) {
+        Medium24 medium24 = new Medium24();
+        TreeNode treeNode = new TreeNode(6);
+        treeNode.left = new TreeNode(3);
+        treeNode.right = new TreeNode(9);
+        treeNode.left.left = new TreeNode(1);
+        boolean flag = medium24.isValidBST(treeNode);
+        System.out.println(flag);
+    }
+}
