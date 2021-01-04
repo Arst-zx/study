@@ -1087,8 +1087,49 @@ class Medium20 {
  */
 class Medium21 {
     public boolean exist(char[][] board, String word) {
-        int length = word.length();
-        return true;
+        int length = board.length;
+        int width = board[0].length;
+        boolean[][] visited = new boolean[length][width];
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < width; j++) {
+                boolean flag = check(board, visited, i, j, word, 0);
+                if (flag) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean check(char[][] board, boolean[][] visited, int length, int width, String word, int index) {
+        if (board[length][width] != word.charAt(index)) {
+            return false;
+        } else if (index == word.length() - 1) {
+            return true;
+        }
+        visited[length][width] = true;
+        int[][] directions = {{1, 0}, {-1, 0}, {0, 1} ,{0, -1}};
+        boolean result = false;
+        for (int[] direction : directions) {
+            int i = length + direction[0];
+            int j = width + direction[1];
+            if (i < board.length && i >= 0 && j >= 0 && j < board[0].length) {
+                if (!visited[i][j]) {
+                    boolean flag = check(board, visited, i, j, word, index + 1);
+                    if (flag) {
+                        result = true;
+                        break;
+                    }
+                }
+            }
+        }
+        visited[length][width] = false;
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Medium21 medium21 = new Medium21();
+        medium21.exist(new char[][] {{'A','B','C','E'}, {'S','F','C','S'}, {'A','D','E','E'}}, "ABCCED");
     }
 }
 
