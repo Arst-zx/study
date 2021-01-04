@@ -1164,3 +1164,22 @@ class Medium22 {
         medium22.inorderTraversal(treeNode);
     }
 }
+
+/**
+ * 96 卡塔兰数
+ */
+class Medium23 {
+    public int numTrees(int n) {
+        long result = 1;
+        for (int i = 0; i < n; i++) {
+            result = result * 2 * (2 * i + 1)/(i + 2);
+        }
+        return (int)result;
+    }
+
+    public static void main(String[] args) {
+        Medium23 medium23 = new Medium23();
+        int result = medium23.numTrees(19);
+        System.out.println(result);
+    }
+}
