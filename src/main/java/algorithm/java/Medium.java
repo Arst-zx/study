@@ -1215,3 +1215,52 @@ class Medium24 {
         System.out.println(flag);
     }
 }
+
+/**
+ * 102
+ */
+class Medium25 {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> lists = new LinkedList<>();
+        if (root == null) {
+            return lists;
+        }
+        LinkedList<TreeNode> linkedList = new LinkedList<>();
+        linkedList.offer(root);
+        System.out.println("linkedList尾部加入root：" + linkedList);
+        while (!linkedList.isEmpty()) {
+            System.out.println("开始循环linkedList：" + linkedList);
+            List<Integer> list = new ArrayList<>();
+            System.out.println("新建list：" + list);
+            int length = linkedList.size();
+            System.out.println("linkedList长度：" + length);
+            for (int i = 1; i <= length; i++) {
+                TreeNode treeNode = linkedList.poll();
+                System.out.println("linkedList头部弹出：" + linkedList);
+                list.add(treeNode.val);
+                System.out.println("当前list：" + list);
+                if (treeNode.left != null) {
+                    linkedList.offer(treeNode.left);
+                    System.out.println("linkedList加入左节点：" + linkedList);
+                }
+                if (treeNode.right != null) {
+                    linkedList.offer(treeNode.right);
+                    System.out.println("linkedList加入右节点：" + linkedList);
+                }
+            }
+            lists.add(list);
+            System.out.println("结果集：" + lists);
+        }
+        return lists;
+    }
+
+    public static void main(String[] args) {
+        Medium25 medium25 = new Medium25();
+        TreeNode treeNode = new TreeNode(6);
+        treeNode.left = new TreeNode(3);
+        treeNode.right = new TreeNode(9);
+        treeNode.left.left = new TreeNode(1);
+        List<List<Integer>> lists = medium25.levelOrder(treeNode);
+        System.out.println(lists);
+    }
+}
