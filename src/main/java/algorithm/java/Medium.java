@@ -1264,3 +1264,35 @@ class Medium25 {
         System.out.println(lists);
     }
 }
+
+/**
+ * 105
+ */
+class Medium26 {
+    public Map<Integer, Integer> map = new HashMap<>();
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        for (int i = 0; i < preorder.length; i++) {
+            map.put(inorder[i], i);
+        }
+        return myBuildTree(preorder, 0, preorder.length - 1, inorder, 0, preorder.length - 1);
+    }
+
+    public TreeNode myBuildTree(int[] preorder, int preorder_start, int preorder_end, int[] inorder, int inorder_start, int inorder_end) {
+        if (preorder_start > preorder_end) {
+            return null;
+        }
+        int preorder_root = preorder_start;
+        int inorder_root = map.get(preorder[preorder_root]);
+        TreeNode root = new TreeNode(preorder[preorder_root]);
+        int left_length = inorder_root - inorder_start;
+        root.left = myBuildTree(preorder, preorder_start + 1, preorder_start + left_length, inorder, inorder_start, inorder_root - 1);
+        root.right = myBuildTree(preorder, preorder_start + left_length + 1, preorder_end, inorder, inorder_root + 1, inorder_end);
+        return root;
+    }
+
+    public static void main(String[] args) {
+        Medium26 medium26 = new Medium26();
+        TreeNode treeNode = medium26.buildTree(new int[] {3,9,20,15,7}, new int[] {9,3,15,20,7});
+        System.out.println(treeNode);
+    }
+}
