@@ -29,8 +29,10 @@ public class TestServlet extends HttpServlet {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        httpServletResponse.getOutputStream().write(jsonObject.toString().getBytes());
-        httpServletResponse.flushBuffer();
+//        httpServletResponse.getOutputStream().write(jsonObject.toString().getBytes());
+//        httpServletResponse.flushBuffer();
+        httpServletResponse.getWriter().println(jsonObject);
+        httpServletResponse.getWriter().close();
         System.out.println(jsonObject);
     }
 
