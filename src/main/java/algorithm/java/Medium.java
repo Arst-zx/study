@@ -12,45 +12,81 @@ package algorithm.java;
 import java.util.*;
 
 /**
- * 2
+ * 2.两数相加
  */
 public class Medium {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        if (l1 == null) {
-            return l2;
+    public ListNode addTwoNumbers(ListNode listNode1, ListNode listNode2) {
+        if (listNode1 == null) {
+            return listNode2;
         }
-        if (l2 == null) {
-            return l1;
+        if (listNode2 == null) {
+            return listNode1;
         }
         ListNode listNode = new ListNode(0);
-        ListNode l = listNode;
-        int count = 0;
-        while (l1 != null || l2 != null) {
+        ListNode listNodePointer = listNode;
+        int carry = 0;
+        while (listNode1 != null || listNode2 != null) {
             int sum = 0;
-            if (l1 != null) {
-                sum += l1.val;
-                l1 = l1.next;
+            if (listNode1 != null) {
+                sum += listNode1.val;
+                listNode1 = listNode1.next;
             }
-            if (l2 != null) {
-                sum += l2.val;
-                l2 = l2.next;
+            if (listNode2 != null) {
+                sum += listNode2.val;
+                listNode2 = listNode2.next;
             }
-            if (count == 1) {
-                sum++;
-            }
+            sum += carry;
             if (sum > 9) {
-                count = 1;
+                carry = 1;
             } else {
-                count = 0;
+                carry = 0;
             }
-            l.next = new ListNode(sum%10);
-            l = l.next;
+
+            listNodePointer.next = new ListNode(sum % 10);
+            listNodePointer = listNodePointer.next;
         }
-        if (count > 0) {
-            l.next = new ListNode(count);
+        if (carry > 0) {
+            listNodePointer.next = new ListNode(carry);
         }
         return listNode.next;
     }
+
+//    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+//        if (l1 == null) {
+//            return l2;
+//        }
+//        if (l2 == null) {
+//            return l1;
+//        }
+//        ListNode listNode = new ListNode(0);
+//        ListNode l = listNode;
+//        int count = 0;
+//        while (l1 != null || l2 != null) {
+//            int sum = 0;
+//            if (l1 != null) {
+//                sum += l1.val;
+//                l1 = l1.next;
+//            }
+//            if (l2 != null) {
+//                sum += l2.val;
+//                l2 = l2.next;
+//            }
+//            if (count == 1) {
+//                sum++;
+//            }
+//            if (sum > 9) {
+//                count = 1;
+//            } else {
+//                count = 0;
+//            }
+//            l.next = new ListNode(sum%10);
+//            l = l.next;
+//        }
+//        if (count > 0) {
+//            l.next = new ListNode(count);
+//        }
+//        return listNode.next;
+//    }
 
     public static void main(String[] args) {
         ListNode l1 = new ListNode(1);
@@ -63,14 +99,37 @@ public class Medium {
         l2.next.next = new ListNode(9);
 
         Medium medium = new Medium();
-        medium.addTwoNumbers(l1, l2);
+        ListNode listNode = medium.addTwoNumbers(l1, l2);
+        System.out.println(listNode);
     }
 }
 
 /**
- * 3
+ * 3。无重复字符de最长子串
  */
 class Medium1 {
+    public int lengthOfLongestSubstring(String s) {
+        int max = 0;
+        if (s.isEmpty()) {
+            return max;
+        }
+        HashSet<Character> hashSet = new HashSet<>();
+        int pointer = -1;
+        for (int i = 0; i < s.length(); i++) {
+            if (i > 0) {
+                hashSet.remove(s.charAt(i -1));
+            }
+            while (pointer + 1 < s.length() && !hashSet.contains(s.charAt(pointer + 1))) {
+                hashSet.add(s.charAt(pointer + 1));
+                pointer++;
+            }
+            if (pointer - i + 1 > max) {
+                max = pointer - i + 1;
+            }
+        }
+        return max;
+    }
+
 //    public int lengthOfLongestSubstring(String s) {
 //        if (s.isEmpty()) {
 //            return 0;
@@ -93,24 +152,24 @@ class Medium1 {
 //        return max;
 //    }
 
-    public int lengthOfLongestSubstring(String s) {
-        HashSet<Character> hashSet = new HashSet<>();
-        int max = 0;
-        int right = -1;
-        for (int i = 0; i < s.length(); i++) {
-            if (i > 0) {
-                hashSet.remove(s.charAt(i-1));
-            }
-            while (right + 1 < s.length() && !hashSet.contains(s.charAt(right + 1))) {
-                hashSet.add(s.charAt(right + 1));
-                right++;
-            }
-            if (right - i + 1 > max) {
-                max = right - i + 1;
-            }
-        }
-        return max;
-    }
+//    public int lengthOfLongestSubstring(String s) {
+//        HashSet<Character> hashSet = new HashSet<>();
+//        int max = 0;
+//        int right = -1;
+//        for (int i = 0; i < s.length(); i++) {
+//            if (i > 0) {
+//                hashSet.remove(s.charAt(i-1));
+//            }
+//            while (right + 1 < s.length() && !hashSet.contains(s.charAt(right + 1))) {
+//                hashSet.add(s.charAt(right + 1));
+//                right++;
+//            }
+//            if (right - i + 1 > max) {
+//                max = right - i + 1;
+//            }
+//        }
+//        return max;
+//    }
 
     public static void main(String[] args) {
         Medium1 medium1 = new Medium1();
@@ -120,9 +179,38 @@ class Medium1 {
 }
 
 /**
- * 5
+ * 5.最长回文子串
  */
 class Medium2 {
+    public String huiwen(String s, int left, int right) {
+        int i = left;
+        int j = right;
+        while (i >= 0 && j < s.length()) {
+            if (s.charAt(i) == s.charAt(j)) {
+                i--;
+                j++;
+            } else {
+                break;
+            }
+        }
+        return s.substring(i + 1, j);
+    }
+
+    public String longestPalindrome(String s) {
+        if (s.isEmpty() || s.length() == 1) {
+            return s;
+        }
+        String result = s.substring(0, 1);
+        for (int i = 0; i < s.length(); i++) {
+            String oneCharacterCenter = huiwen(s, i, i);
+            String twoCharacterCenter = huiwen(s, i, i + 1);
+            String maxString = oneCharacterCenter.length() > twoCharacterCenter.length()?oneCharacterCenter:twoCharacterCenter;
+            if (maxString.length() > result.length()) {
+                result = maxString;
+            }
+        }
+        return result;
+    }
 //    public String longestPalindrome(String s) {
 //        String result = "";
 //        for (int i = 0; i < s.length(); i++) {
@@ -149,35 +237,35 @@ class Medium2 {
 //        return result;
 //    }
 
-    public String longestPalindrome(String s) {
-        if (s.isEmpty() || s.length() == 1) {
-            return s;
-        }
-        String re = s.substring(0, 1);
-        for (int i = 0; i < s.length(); i++) {
-            String oneString = huiwen(s, i, i);
-            String twoString = huiwen(s, i, i + 1);
-            String maxString = oneString.length() > twoString.length() ? oneString : twoString;
-            if (maxString.length() > re.length()) {
-                re = maxString;
-            }
-        }
-        return re;
-    }
-
-    public String huiwen(String s, int left, int right) {
-        int i = left;
-        int j = right;
-        while (i >=0 && j < s.length()) {
-            if (s.charAt(i) == s.charAt(j)) {
-                j++;
-                i--;
-            } else {
-                break;
-            }
-        }
-        return s.substring(i + 1, j);
-    }
+//    public String longestPalindrome(String s) {
+//        if (s.isEmpty() || s.length() == 1) {
+//            return s;
+//        }
+//        String re = s.substring(0, 1);
+//        for (int i = 0; i < s.length(); i++) {
+//            String oneString = huiwen(s, i, i);
+//            String twoString = huiwen(s, i, i + 1);
+//            String maxString = oneString.length() > twoString.length() ? oneString : twoString;
+//            if (maxString.length() > re.length()) {
+//                re = maxString;
+//            }
+//        }
+//        return re;
+//    }
+//
+//    public String huiwen(String s, int left, int right) {
+//        int i = left;
+//        int j = right;
+//        while (i >=0 && j < s.length()) {
+//            if (s.charAt(i) == s.charAt(j)) {
+//                j++;
+//                i--;
+//            } else {
+//                break;
+//            }
+//        }
+//        return s.substring(i + 1, j);
+//    }
 
     public static void main(String[] args) {
         Medium2 medium = new Medium2();
@@ -187,9 +275,30 @@ class Medium2 {
 }
 
 /**
- * 11
+ * 11.盛最多水的容器
  */
 class Medium3 {
+    public int maxArea(int[] height) {
+        int maxArea = 0;
+        if (height == null || height.length < 1) {
+            return maxArea;
+        }
+        int i = 0;
+        int j = height.length - 1;
+        while (i != j) {
+            int area = (j - 1)* Math.min(height[i], height[j]);
+            if (height[i] < height[j]) {
+                i++;
+            } else {
+                j--;
+            }
+            if (area > maxArea) {
+                maxArea = area;
+            }
+        }
+        return maxArea;
+    }
+
 //    public int maxArea(int[] height) {
 //        int maxArea = 0;
 //        for (int i = 0; i < height.length; i++) {
@@ -206,26 +315,26 @@ class Medium3 {
 //        return maxArea;
 //    }
 
-    public int maxArea(int[] height) {
-        int maxArea = 0;
-        if (height == null || height.length == 0) {
-            return 0;
-        }
-        int i = 0;
-        int j = height.length - 1;
-        while (i != j) {
-            int area = (j - i) * Math.min(height[i], height[j]);
-            if (area > maxArea) {
-                maxArea = area;
-            }
-            if (height[i] < height[j]) {
-                i++;
-            } else {
-                j--;
-            }
-        }
-        return maxArea;
-    }
+//    public int maxArea(int[] height) {
+//        int maxArea = 0;
+//        if (height == null || height.length == 0) {
+//            return 0;
+//        }
+//        int i = 0;
+//        int j = height.length - 1;
+//        while (i != j) {
+//            int area = (j - i) * Math.min(height[i], height[j]);
+//            if (area > maxArea) {
+//                maxArea = area;
+//            }
+//            if (height[i] < height[j]) {
+//                i++;
+//            } else {
+//                j--;
+//            }
+//        }
+//        return maxArea;
+//    }
 
     public static void main(String[] args) {
         Medium3 medium3 = new Medium3();
@@ -235,7 +344,7 @@ class Medium3 {
 }
 
 /**
- * 15
+ * 15.三数之和
  */
 class Medium4 {
     public List<List<Integer>> threeSum(int[] nums) {
@@ -245,14 +354,14 @@ class Medium4 {
         }
         Arrays.sort(nums);
         for (int i = 0; i < nums.length; i++) {
-            int left = i + 1;
-            int right = nums.length - 1;
             if (nums[i] > 0) {
                 break;
             }
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
+            int left = i + 1;
+            int right = nums.length - 1;
             while (left < right) {
                 if (nums[i] + nums[left] + nums[right] == 0) {
                     while (left < right && nums[left] == nums[left + 1]) {
@@ -262,12 +371,9 @@ class Medium4 {
                         right--;
                     }
                     List<Integer> list = new LinkedList<>();
-                    Integer integer1 = nums[i];
-                    Integer integer2 = nums[left];
-                    Integer integer3 = nums[right];
-                    list.add(integer1);
-                    list.add(integer2);
-                    list.add(integer3);
+                    list.add(nums[i]);
+                    list.add(nums[left]);
+                    list.add(nums[right]);
                     lists.add(list);
                     left++;
                     right--;
@@ -281,9 +387,53 @@ class Medium4 {
         return lists;
     }
 
+//    public List<List<Integer>> threeSum(int[] nums) {
+//        List<List<Integer>> lists = new LinkedList<>();
+//        if (nums == null || nums.length < 3) {
+//            return lists;
+//        }
+//        Arrays.sort(nums);
+//        for (int i = 0; i < nums.length; i++) {
+//            int left = i + 1;
+//            int right = nums.length - 1;
+//            if (nums[i] > 0) {
+//                break;
+//            }
+//            if (i > 0 && nums[i] == nums[i - 1]) {
+//                continue;
+//            }
+//            while (left < right) {
+//                if (nums[i] + nums[left] + nums[right] == 0) {
+//                    while (left < right && nums[left] == nums[left + 1]) {
+//                        left++;
+//                    }
+//                    while (left < right && nums[right] == nums[right - 1]) {
+//                        right--;
+//                    }
+//                    List<Integer> list = new LinkedList<>();
+//                    Integer integer1 = nums[i];
+//                    Integer integer2 = nums[left];
+//                    Integer integer3 = nums[right];
+//                    list.add(integer1);
+//                    list.add(integer2);
+//                    list.add(integer3);
+//                    lists.add(list);
+//                    left++;
+//                    right--;
+//                } else if (nums[i] + nums[left] + nums[right] < 0) {
+//                    left++;
+//                } else {
+//                    right--;
+//                }
+//            }
+//        }
+//        return lists;
+//    }
+
     public static void main(String[] args) {
         Medium4 medium4 = new Medium4();
-        medium4.threeSum(new int[] {-1,0,1,2,-1,-5});
+        List<List<Integer>> lists = medium4.threeSum(new int[] {-1,0,1,2,-1,-5});
+        System.out.println(lists);
     }
 }
 
