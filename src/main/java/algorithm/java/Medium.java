@@ -438,9 +438,41 @@ class Medium4 {
 }
 
 /**
- * 17
+ * 17.电话号码的字母组合
  */
 class Medium5 {
+    public  List<String> letterCombinations(String digits) {
+        List<String> list = new LinkedList<>();
+        if (digits.isEmpty()) {
+            return list;
+        }
+        Map<Character,String> map = new HashMap<>(16);
+        map.put('2', "abc");
+        map.put('3', "def");
+        map.put('4', "ghi");
+        map.put('5', "jkl");
+        map.put('6', "mno");
+        map.put('7', "pqrs");
+        map.put('8', "tuv");
+        map.put('9', "wxyz");
+        back(map, list, digits, 0, new StringBuilder());
+        return list;
+    }
+
+    public void back(Map<Character, String> map, List list, String digits, int index, StringBuilder stringBuilder) {
+        if (index == digits.length()) {
+            list.add(stringBuilder.toString());
+        } else {
+            char ch = digits.charAt(index);
+            String letters = map.get(ch);
+            for (int i = 0; i < letters.length(); i++) {
+                stringBuilder.append(letters.charAt(i));
+                back(map, list, digits, index + 1, stringBuilder);
+                stringBuilder.deleteCharAt(index);
+            }
+        }
+    }
+
 //    public List<String> letterCombinations(String digits) {
 //        List<String> list = new LinkedList<>();
 //        if (digits.length() == 0) {
@@ -474,38 +506,38 @@ class Medium5 {
 //        }
 //    }
 
-    public List<String> letterCombinations(String digits) {
-        List<String> list = new LinkedList<>();
-        if (digits.length() == 0) {
-            return list;
-        }
-        Map<Character, String> map = new HashMap<>();
-        map.put('2', "abc");
-        map.put('3', "def");
-        map.put('4', "ghi");
-        map.put('5', "jkl");
-        map.put('6', "mno");
-        map.put('7', "pqrs");
-        map.put('8', "tuv");
-        map.put('9', "wxyz");
-        StringBuffer stringBuffer = new StringBuffer();
-        back(map, list, stringBuffer, 0, digits);
-        return list;
-    }
-
-    public void back(Map<Character, String> map, List<String> list, StringBuffer stringBuffer, int index, String digits) {
-        if (index == digits.length()) {
-            list.add(stringBuffer.toString());
-        } else {
-            char ch = digits.charAt(index);
-            String letters = map.get(ch);
-            for (int i = 0; i < letters.length(); i++) {
-                stringBuffer.append(letters.charAt(i));
-                back(map, list, stringBuffer, index + 1, digits);
-                stringBuffer.deleteCharAt(index);
-            }
-        }
-    }
+//    public List<String> letterCombinations(String digits) {
+//        List<String> list = new LinkedList<>();
+//        if (digits.length() == 0) {
+//            return list;
+//        }
+//        Map<Character, String> map = new HashMap<>();
+//        map.put('2', "abc");
+//        map.put('3', "def");
+//        map.put('4', "ghi");
+//        map.put('5', "jkl");
+//        map.put('6', "mno");
+//        map.put('7', "pqrs");
+//        map.put('8', "tuv");
+//        map.put('9', "wxyz");
+//        StringBuffer stringBuffer = new StringBuffer();
+//        back(map, list, stringBuffer, 0, digits);
+//        return list;
+//    }
+//
+//    public void back(Map<Character, String> map, List<String> list, StringBuffer stringBuffer, int index, String digits) {
+//        if (index == digits.length()) {
+//            list.add(stringBuffer.toString());
+//        } else {
+//            char ch = digits.charAt(index);
+//            String letters = map.get(ch);
+//            for (int i = 0; i < letters.length(); i++) {
+//                stringBuffer.append(letters.charAt(i));
+//                back(map, list, stringBuffer, index + 1, digits);
+//                stringBuffer.deleteCharAt(index);
+//            }
+//        }
+//    }
 
     public static void main(String[] args) {
         Medium5 medium5 = new Medium5();
