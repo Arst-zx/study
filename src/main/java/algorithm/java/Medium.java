@@ -547,9 +547,30 @@ class Medium5 {
 }
 
 /**
- * 19
+ * 19.删除链表的倒数第N个节点
  */
 class Medium6 {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode listNode = new ListNode();
+        listNode.next = head;
+        if (head == null) {
+            return null;
+        }
+        ListNode first = listNode;
+        ListNode end = listNode;
+        for (int i = 0; i < n; i++) {
+            end = end.next;
+        }
+        while (end.next != null) {
+            first = first.next;
+            end = end.next;
+        }
+        if (first.next != null) {
+            first.next = first.next.next;
+        }
+        return listNode.next;
+    }
+
 //    public ListNode removeNthFromEnd(ListNode head, int n) {
 //        List<ListNode> listNodes = new LinkedList<>();
 //        while (head != null) {
@@ -569,38 +590,38 @@ class Medium6 {
 //        return result.next;
 //    }
 
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode listNode = new ListNode();
-        listNode.next = head;
-        if (head == null) {
-            return null;
-        }
-        ListNode end = listNode;
-        ListNode first = listNode;
-        for (int i = 0; i < n; i++) {
-            end = end.next;
-        }
-        while (end.next != null) {
-            first = first.next;
-            end = end.next;
-        }
-        if (first.next != null) {
-            first.next = first.next.next;
-        }
-        return listNode.next;
-    }
+//    public ListNode removeNthFromEnd(ListNode head, int n) {
+//        ListNode listNode = new ListNode();
+//        listNode.next = head;
+//        if (head == null) {
+//            return null;
+//        }
+//        ListNode end = listNode;
+//        ListNode first = listNode;
+//        for (int i = 0; i < n; i++) {
+//            end = end.next;
+//        }
+//        while (end.next != null) {
+//            first = first.next;
+//            end = end.next;
+//        }
+//        if (first.next != null) {
+//            first.next = first.next.next;
+//        }
+//        return listNode.next;
+//    }
 
     public static void main(String[] args) {
         Medium6 medium6 = new Medium6();
         ListNode listNode = new ListNode(1);
-//        listNode.next = new ListNode(2);
+        listNode.next = new ListNode(2);
         ListNode listNode1 = medium6.removeNthFromEnd(listNode, 1);
         System.out.println(listNode1);
     }
 }
 
 /**
- * 22
+ * 22.括号生成
  */
 class Medium7 {
     public List<String> generateParenthesis(int n) {
