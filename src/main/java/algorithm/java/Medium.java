@@ -625,14 +625,13 @@ class Medium6 {
  */
 class Medium7 {
     public List<String> generateParenthesis(int n) {
-        List<String> list = new ArrayList<>();
-        StringBuilder stringBuilder = new StringBuilder();
-        back(list, stringBuilder, 0, 0, n);
+        List<String> list = new LinkedList<>();
+        back(list, new StringBuilder(), 0, 0, n);
         return list;
     }
 
     public void back(List<String> list, StringBuilder stringBuilder, int left, int right, int n) {
-        if (stringBuilder.length() == 2 * n) {
+        if (stringBuilder.length() == n * 2) {
             list.add(stringBuilder.toString());
             return;
         }
@@ -647,6 +646,30 @@ class Medium7 {
             stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         }
     }
+
+//    public List<String> generateParenthesis(int n) {
+//        List<String> list = new ArrayList<>();
+//        StringBuilder stringBuilder = new StringBuilder();
+//        back(list, stringBuilder, 0, 0, n);
+//        return list;
+//    }
+//
+//    public void back(List<String> list, StringBuilder stringBuilder, int left, int right, int n) {
+//        if (stringBuilder.length() == 2 * n) {
+//            list.add(stringBuilder.toString());
+//            return;
+//        }
+//        if (left < n) {
+//            stringBuilder.append("(");
+//            back(list, stringBuilder, left + 1, right, n);
+//            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+//        }
+//        if (right < left) {
+//            stringBuilder.append(")");
+//            back(list, stringBuilder, left, right + 1, n);
+//            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+//        }
+//    }
 
     public static void main(String[] args) {
         Medium7 medium7 = new Medium7();
