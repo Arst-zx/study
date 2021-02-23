@@ -14,7 +14,7 @@ import java.util.*;
 /**
  * 2.两数相加
  */
-public class Medium {
+class Medium {
     public ListNode addTwoNumbers(ListNode listNode1, ListNode listNode2) {
         if (listNode1 == null) {
             return listNode2;
@@ -1492,29 +1492,49 @@ class Medium25 {
 }
 
 /**
- * 105
+ * 105.从前序与中序遍历序列构造二叉树
  */
 class Medium26 {
     public Map<Integer, Integer> map = new HashMap<>();
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        for (int i = 0; i < preorder.length; i++) {
+        for (int i = 0; i < inorder.length; i++) {
             map.put(inorder[i], i);
         }
-        return myBuildTree(preorder, 0, preorder.length - 1, inorder, 0, preorder.length - 1);
+        return myBuildTree(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
     }
-
     public TreeNode myBuildTree(int[] preorder, int preorder_start, int preorder_end, int[] inorder, int inorder_start, int inorder_end) {
         if (preorder_start > preorder_end) {
             return null;
         }
         int preorder_root = preorder_start;
         int inorder_root = map.get(preorder[preorder_root]);
-        TreeNode root = new TreeNode(preorder[preorder_root]);
+        TreeNode treeNode = new TreeNode(preorder[preorder_root]);
         int left_length = inorder_root - inorder_start;
-        root.left = myBuildTree(preorder, preorder_start + 1, preorder_start + left_length, inorder, inorder_start, inorder_root - 1);
-        root.right = myBuildTree(preorder, preorder_start + left_length + 1, preorder_end, inorder, inorder_root + 1, inorder_end);
-        return root;
+        treeNode.left = myBuildTree(preorder, preorder_start + 1, preorder_start + left_length, inorder, inorder_start, inorder_root - 1);
+        treeNode.right = myBuildTree(preorder, preorder_start + 1 + left_length, preorder_end, inorder, inorder_root + 1, inorder_end);
+        return treeNode;
     }
+
+//    public Map<Integer, Integer> map = new HashMap<>();
+//    public TreeNode buildTree(int[] preorder, int[] inorder) {
+//        for (int i = 0; i < preorder.length; i++) {
+//            map.put(inorder[i], i);
+//        }
+//        return myBuildTree(preorder, 0, preorder.length - 1, inorder, 0, preorder.length - 1);
+//    }
+//
+//    public TreeNode myBuildTree(int[] preorder, int preorder_start, int preorder_end, int[] inorder, int inorder_start, int inorder_end) {
+//        if (preorder_start > preorder_end) {
+//            return null;
+//        }
+//        int preorder_root = preorder_start;
+//        int inorder_root = map.get(preorder[preorder_root]);
+//        TreeNode root = new TreeNode(preorder[preorder_root]);
+//        int left_length = inorder_root - inorder_start;
+//        root.left = myBuildTree(preorder, preorder_start + 1, preorder_start + left_length, inorder, inorder_start, inorder_root - 1);
+//        root.right = myBuildTree(preorder, preorder_start + left_length + 1, preorder_end, inorder, inorder_root + 1, inorder_end);
+//        return root;
+//    }
 
     public static void main(String[] args) {
         Medium26 medium26 = new Medium26();

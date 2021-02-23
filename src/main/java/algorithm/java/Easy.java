@@ -1292,11 +1292,11 @@ class Easy23 {
 }
 
 /**
- * 198
+ * 198.打家劫舍
  */
 class Easy24 {
     public int rob(int[] nums) {
-        if (nums == null || nums.length == 0) {
+        if (nums == null || nums.length ==0) {
             return 0;
         }
         if (nums.length == 1) {
@@ -1310,6 +1310,29 @@ class Easy24 {
             sum1 = temp;
         }
         return sum2;
+    }
+
+//    public int rob(int[] nums) {
+//        if (nums == null || nums.length == 0) {
+//            return 0;
+//        }
+//        if (nums.length == 1) {
+//            return nums[0];
+//        }
+//        int sum1 = nums[0];
+//        int sum2 = Math.max(nums[0], nums[1]);
+//        for (int i = 2; i < nums.length; i++) {
+//            int temp = sum2;
+//            sum2 = Math.max(sum1 + nums[i], sum2);
+//            sum1 = temp;
+//        }
+//        return sum2;
+//    }
+
+    public static void main(String[] args) {
+        Easy24 easy24 = new Easy24();
+        int result = easy24.rob(new int[] {2,7,9,3,1});
+        System.out.println(result);
     }
 }
 
