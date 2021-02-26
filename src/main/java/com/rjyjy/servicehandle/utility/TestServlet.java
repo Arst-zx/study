@@ -1,12 +1,13 @@
 package com.rjyjy.servicehandle.utility;
 
 import org.json.JSONException;
-import org.json.JSONObject;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * @author: 章鑫
@@ -23,30 +24,55 @@ public class TestServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws IOException {
         httpServletResponse.setContentType("text/html;charset=UTF-8");
-        JSONObject jsonObject = null;
+        ResultMap resultMap;
         try {
-            jsonObject = myDoGet(httpServletRequest, httpServletResponse);
+            resultMap = myDoGet(httpServletRequest, httpServletResponse);
         } catch (JSONException e) {
-            e.printStackTrace();
+            resultMap = ResultMap.fail(e.toString());
         }
+
 //        httpServletResponse.getOutputStream().write(jsonObject.toString().getBytes());
 //        httpServletResponse.flushBuffer();
-        httpServletResponse.getWriter().println(jsonObject);
+        httpServletResponse.getWriter().println(resultMap);
         httpServletResponse.getWriter().close();
-        System.out.println(jsonObject);
+        System.out.println(resultMap);
     }
 
-    public JSONObject myDoGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws JSONException {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("code", "1");
-        jsonObject.put("message", "1");
+    public ResultMap myDoGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws JSONException {
         String UserName = httpServletRequest.getParameter("arg_user_name");
+        ResultMap resultMap;
         if (UserName == null) {
-            jsonObject.put("code", "0");
-            jsonObject.put("message", "缺少参数！");
+            resultMap = ResultMap.fail("缺少参数！");
         } else {
-            jsonObject.put("message", UserName);
+            resultMap = ResultMap.success(UserName);
         }
-        return jsonObject;
+        return resultMap;
+    }
+}
+
+class ResultMap {
+    private String message;
+    private String code;
+
+    public static ResultMap success(String message) {
+        ResultMap resultMap = new ResultMap();
+        resultMap.code = "1";
+        resultMap.message = message;
+        return resultMap;
+    }
+
+    public static ResultMap fail(String message) {
+        ResultMap resultMap = new ResultMap();
+        resultMap.code = "0";
+        resultMap.message = message;
+        return resultMap;
+    }
+
+    @Override
+    public String toString() {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("code", this.code);
+        hashMap.put("message", message);
+        return hashMap.toString();
     }
 }
