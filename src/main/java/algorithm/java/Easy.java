@@ -14,6 +14,9 @@ import java.util.Stack;
  * @Description: LeetCode热题HOT100
  **/
 
+/**
+ * 链表节点类
+ */
 class ListNode {
     public int val;
     public ListNode next;
@@ -27,6 +30,9 @@ class ListNode {
     }
 }
 
+/**
+ * 树节点类
+ */
 class TreeNode {
     public int val;
     public TreeNode left;
@@ -38,7 +44,7 @@ class TreeNode {
 }
 
 /**
- * 1
+ * 1.两数之和
  */
 public class Easy {
     public int[] twoSum(int[] nums, int target) {
@@ -57,7 +63,7 @@ public class Easy {
 }
 
 /**
- * 1
+ * 1.两数之和
  */
 class Easy1 {
     public int[] twoSum(int[] nums, int target) {
