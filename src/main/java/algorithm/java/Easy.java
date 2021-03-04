@@ -15,23 +15,26 @@ import java.util.Stack;
  **/
 
 class ListNode {
-    int val;
+    public int val;
     public ListNode next;
     public ListNode() {}
-    public ListNode(int x) {
-        val = x;
+    public ListNode(int val) {
+        this.val = val;
     }
     ListNode(int val, ListNode next) {
-        this.val = val; this.next = next;
+        this.val = val;
+        this.next = next;
     }
 }
 
 class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode() {};
-    TreeNode(int x) { val = x; }
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode() {};
+    public TreeNode(int val) {
+        this.val = val;
+    }
 }
 
 /**
