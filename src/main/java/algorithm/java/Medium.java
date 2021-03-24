@@ -1542,3 +1542,9 @@ class Medium26 {
         System.out.println(treeNode);
     }
 }
+
+class Medium27 {
+    public void flatten(TreeNode root) {
+
+    }
+}

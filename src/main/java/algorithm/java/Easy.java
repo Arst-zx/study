@@ -1643,7 +1643,7 @@ class Easy31 {
 }
 
 /**
- * 617
+ * 617.合并二叉树
  */
 class Easy32 {
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
@@ -1665,6 +1665,9 @@ class Easy32 {
         treeNode.left = new TreeNode(2);
         treeNode.right = new TreeNode(3);
         treeNode.left.left = new TreeNode(4);
+        treeNode.left.right = new TreeNode(5);
+        treeNode.right.left= new TreeNode(6);
+        treeNode.right.right = new TreeNode(7);
         TreeNode t = test18.mergeTrees(treeNode, treeNode);
         System.out.println(t);
     }
