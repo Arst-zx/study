@@ -105,7 +105,7 @@ class Medium {
 }
 
 /**
- * 3。无重复字符de最长子串
+ * 3.无重复字符的最长子串
  */
 class Medium1 {
     public int lengthOfLongestSubstring(String s) {
