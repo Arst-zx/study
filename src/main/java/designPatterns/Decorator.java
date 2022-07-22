@@ -2,7 +2,6 @@ package designPatterns;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：IdeaProjects
  * @Name: Decorator
  * @date: 2019-10-09 10:21

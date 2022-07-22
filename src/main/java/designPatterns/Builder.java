@@ -4,13 +4,11 @@ import lombok.Data;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：study
  * @Name: Builder
  * @date: 2019-09-25 15:45
  * @Description: 建造者模式
  **/
-
 public class Builder {
 
     /**

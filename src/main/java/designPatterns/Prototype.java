@@ -2,13 +2,11 @@ package designPatterns;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：study
  * @Name: Prototype
  * @date: 2019-09-25 10:59
  * @Description: 原型模式
  **/
-
 public class Prototype implements Cloneable {
 
     /**

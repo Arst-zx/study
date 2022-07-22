@@ -2,13 +2,11 @@ package com.rjyjy.servicehandle.utility;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：Study
  * @Name: RunnableTest
  * @date: 2020-06-02 15:39
  * @Description:
  **/
-
 class MyThreadOne extends Thread {
 
     private int i = 5;

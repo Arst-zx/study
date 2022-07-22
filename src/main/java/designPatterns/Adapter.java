@@ -2,7 +2,6 @@ package designPatterns;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：study
  * @Name: Adapter
  * @date: 2019-09-26 16:38

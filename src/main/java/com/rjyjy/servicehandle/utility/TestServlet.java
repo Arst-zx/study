@@ -1,7 +1,6 @@
 package com.rjyjy.servicehandle.utility;
 
 import org.json.JSONException;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,13 +10,11 @@ import java.util.HashMap;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：java
  * @Name: Test
  * @date: 2021-01-14 15:17
  * @Description:
  **/
-
 @WebServlet(name = "test", urlPatterns = "/test")
 public class TestServlet extends HttpServlet {
 

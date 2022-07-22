@@ -4,13 +4,11 @@ import java.util.Random;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：Study
  * @Name: Thread
  * @date: 2020-06-02 08:59
  * @Description:
  **/
-
 public class ThreadTest extends Thread{
 
     private int i;

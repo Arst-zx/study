@@ -2,13 +2,11 @@ package designPatterns;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：study
  * @Name: Factory
  * @date: 2019-09-25 11:19
  * @Description: 工厂方法模式
  **/
-
 public class Factory {
 
     /**

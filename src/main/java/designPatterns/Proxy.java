@@ -2,7 +2,6 @@ package designPatterns;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：study
  * @Name: Proxy
  * @date: 2019-09-26 16:11
@@ -38,8 +37,6 @@ package designPatterns;
  * 代理（Proxy）类：提供了与真实主题相同的接口，其内部含有对真实主题的引用，它可以访问、控制或扩展真实主题的功能。
  *
  */
-
-import sun.nio.ch.Net;
 
 /**
  * 抽象主题：

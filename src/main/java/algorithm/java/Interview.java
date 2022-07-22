@@ -2,17 +2,11 @@ package algorithm.java;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：Study
  * @Name: Interview
  * @date: 2021-02-23 14:04
- * @Description:
+ * @Description: 百度：翻转二叉树
  **/
-
-/**
- * 百度：翻转二叉树
- */
-
 public class Interview {
     public TNode invertTree(TNode root) {
         if (root == null) {

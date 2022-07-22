@@ -7,13 +7,11 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：Study
  * @Name: ReentrantReadWriteßLockTest
  * @date: 2019-10-21 14:56
  * @Description: 读写锁
  **/
-
 public class ReentrantReadWriteLockTest {
 
     public static void main(String[] args) throws InterruptedException {

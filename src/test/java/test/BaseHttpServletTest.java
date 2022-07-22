@@ -4,7 +4,6 @@ import com.rjyjy.commonutils.StubServletOutputStream;
 import com.rjyjy.servicehandle.utility.BaseHttpServlet;
 import org.junit.Test;
 import org.mockito.Mockito;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,19 +13,16 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：Study
  * @Name: BaseHttpServletTest
  * @date: 2019-10-30 16:12
  * @Description:
  **/
-
 public class BaseHttpServletTest {
 
     private static final String POST = "POST";

@@ -2,13 +2,11 @@ package com.rjyjy.servicehandle.utility;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：Study
  * @Name: JavaMemory
  * @date: 2020-06-18 15:36
  * @Description:
  **/
-
 public class JavaMemory {
 
     /**

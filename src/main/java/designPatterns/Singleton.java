@@ -2,14 +2,12 @@ package designPatterns;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：study
  * @Name: Singleton
  * @date: 2019-09-25 10:27
  * @Description: 单例模式
  *
  **/
-
 public class Singleton {
 
     /**

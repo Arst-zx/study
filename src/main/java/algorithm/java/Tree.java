@@ -2,16 +2,11 @@ package algorithm.java;
 
 /**
  * @author: 章鑫
- * @Email: zhangx511@chinaunicom.cn
  * @Project_name：Study
  * @Name: Tree
  * @date: 2021-03-24 10:51
- * @Description:
+ * @Description: 627.合并二叉树
  **/
-
-/**
- * 627.合并二叉树
- */
 public class Tree {
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
         if (t1 == null) {
